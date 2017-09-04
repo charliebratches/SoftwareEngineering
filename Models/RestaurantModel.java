@@ -3,11 +3,11 @@ import java.util.List;
 public class RestaurantModel {
 	
 	private String name;
-	public String price;
-	private String type;
+	public int price;
+	private int type;
 	private List<String> cusines;
 
-	public RestaurantModel(String name, String price, String type,
+	public RestaurantModel(String name, int price, int type,
 			List<String> cusines){	
 		name = getName();
 		price = getPrice();
@@ -23,20 +23,20 @@ public class RestaurantModel {
 		this.name = name;
 	}
 	
-	public String getPrice(){
+	public int getPrice(){
 		return this.price;
 	}
 	
-	public void setPrice(String price){
+	public void setPrice(int price){
 		this.price = price;
 	}
 	
-	public String getType(){
+	public int getType(){
 		return this.type;
 	}
 	
-	public void setType(String type){
-		this.price = type;
+	public void setType(int type){
+		this.type = type;
 	}
 	
 	public List<String> getCusines(){
