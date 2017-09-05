@@ -9,10 +9,10 @@ public class RestaurantModel {
 
 	public RestaurantModel(String name, int price, int type,
 			List<String> cusines){	
-		name = getName();
-		price = getPrice();
-		type = getType();
-		cusines = getCusines();
+		setName(name);
+		setPrice(price);
+		setType(type);
+		setCusines(cusines);
 	}
 	
 	public String getName(){
