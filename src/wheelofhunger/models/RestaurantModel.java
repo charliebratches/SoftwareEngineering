@@ -1,3 +1,4 @@
+package wheelofhunger.models;
 import java.util.List;
 
 public class RestaurantModel {
@@ -6,13 +7,9 @@ public class RestaurantModel {
 	public int price;
 	private int type;
 	private List<String> cusines;
+	private int id;
 
-	public RestaurantModel(String name, int price, int type,
-			List<String> cusines){	
-		setName(name);
-		setPrice(price);
-		setType(type);
-		setCusines(cusines);
+	public RestaurantModel(String name, int price, int type, List<String> cusines){
 	}
 	
 	public String getName(){
@@ -45,5 +42,13 @@ public class RestaurantModel {
 	
 	public void setCusines(List<String> cusines){
 		this.cusines = cusines;
+	}
+	
+	public int getId(){
+		return this.id;
+	}
+	
+	public void setId(int id){
+		this.id = id;
 	}
 }
