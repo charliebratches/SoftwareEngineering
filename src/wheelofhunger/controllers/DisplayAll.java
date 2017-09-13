@@ -25,8 +25,8 @@ import java.util.List;
 public class DisplayAll extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	static String             url              = "jdbc:mysql://wheelofhunger.ddns.net:3306/WOHDB";
-	static String             user             = "Remote";
-	static String             password         = "123";
+	static String             user             = "remote";
+	static String             password         = "1234";
 	static Connection         connection       = null;
 	
 	public DisplayAll(){
@@ -40,6 +40,7 @@ public class DisplayAll extends HttpServlet{
 	      try {
 	    	  Class.forName("com.mysql.jdbc.Driver");
 	      } catch (ClassNotFoundException e) {
+	    	  System.out.println("class not found");
 	    	  e.printStackTrace();
 	      }
       		connection = null;
@@ -59,14 +60,20 @@ public class DisplayAll extends HttpServlet{
 	         PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
 	         ResultSet rs = preparedStatement.executeQuery();
 	         while (rs.next()) {
-
+	        	 System.out.println("working");
 		        RestaurantModel restaurant = new RestaurantModel();
 	        	restaurant.setName(rs.getString("NAME"));
 	        	restaurant.setPrice(Integer.parseInt(rs.getString("PRICE")));
 	        	restaurant.setType(Integer.parseInt(rs.getString("TYPE")));
-	        	List<String> cusines = Arrays.asList(rs.getString("CUSINES").split(","));
+	        	List<String> cusines = null;	        	
+	        	List<String> notes = null;
+	        	try{
+	        		cusines = Arrays.asList(rs.getString("CUSINES").split(","));
+	        		notes = Arrays.asList(rs.getString("NOTES").split(";"));
+	        	}catch(Exception e){
+	        		System.out.println("cusine or notes are null");
+	        	}
 	        	restaurant.setCusines(cusines);
-	        	List<String> notes = Arrays.asList(rs.getString("NOTES").split(";"));
 	        	restaurant.setNotes(notes);
 	        	restaurant.setId(rs.getInt("id"));
 	            restaurantList.add(restaurant);
@@ -76,8 +83,8 @@ public class DisplayAll extends HttpServlet{
 	         // ContactList.jsp and sending the data to that page
 	         request.setAttribute("restaurantList", restaurantList);
 	         RequestDispatcher rd;
-	         rd = request.getRequestDispatcher("/RestaurantList.jsp");
-	         rd.forward(request, response);
+	         //rd = request.getRequestDispatcher("/RestaurantList.jsp");
+	         //rd.forward(request, response);
 	         
 	      } catch (SQLException e) {
 	         e.printStackTrace();
