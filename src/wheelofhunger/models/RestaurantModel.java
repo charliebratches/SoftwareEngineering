@@ -6,10 +6,10 @@ public class RestaurantModel {
 	private String name;
 	public int price;
 	private int type;
-	private List<String> cusines;
+	private List<String> cuisines;
 	private int id;
 
-	public RestaurantModel(String name, int price, int type, List<String> cusines){
+	public RestaurantModel(){
 	}
 	
 	public String getName(){
@@ -36,12 +36,12 @@ public class RestaurantModel {
 		this.type = type;
 	}
 	
-	public List<String> getCusines(){
-		return this.cusines;
+	public List<String> getCuisines(){
+		return this.cuisines;
 	}
 	
-	public void setCusines(List<String> cusines){
-		this.cusines = cusines;
+	public void setCusines(List<String> cuisines){
+		this.cuisines = cuisines;
 	}
 	
 	public int getId(){
