@@ -62,7 +62,7 @@ public class WOH_Insert extends HttpServlet {
     		System.out.println("fields are null");
     	}
 	    
-    	String cusines = request.getParameter("cusines");
+    	String cuisines = request.getParameter("cuisines");
 		String notes = request.getParameter("notes");
     	try {
 	    	  Class.forName("com.mysql.jdbc.Driver");
@@ -81,8 +81,8 @@ public class WOH_Insert extends HttpServlet {
 	         System.out.println("Failed to make connection!");
 	      }
 	      try {
-	         String selectSQL = "INSERT INTO restaurants(NAME, PRICE, TYPE, CUSINES, NOTES)"
-	         		+ "VALUES ('" + name + "', " + price + ", " + type + ", '" + cusines +"', '" + notes +"');";
+	         String selectSQL = "INSERT INTO restaurants(NAME, PRICE, TYPE, CUISINES, NOTES)"
+	         		+ "VALUES ('" + name + "', " + price + ", " + type + ", '" + cuisines +"', '" + notes +"');";
 	         PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
 	         preparedStatement.executeUpdate();
 	        	         
