@@ -6,7 +6,7 @@ public class RestaurantModel {
 	private String name;
 	public int price;
 	private int type;
-	private List<String> cusines;
+	private List<String> cuisines;
 	private List<String> notes;
 	private int id;
 
@@ -37,12 +37,12 @@ public class RestaurantModel {
 		this.type = type;
 	}
 	
-	public List<String> getCusines(){
-		return this.cusines;
+	public List<String> getCuisines(){
+		return this.cuisines;
 	}
 	
-	public void setCusines(List<String> cusines){
-		this.cusines = cusines;
+	public void setCusines(List<String> cuisines){
+		this.cuisines = cuisines;
 	}
 	
 	public List<String> getNotes(){
