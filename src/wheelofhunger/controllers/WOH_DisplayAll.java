@@ -65,15 +65,15 @@ public class WOH_DisplayAll extends HttpServlet{
 	        	restaurant.setName(rs.getString("NAME"));
 	        	restaurant.setPrice(Integer.parseInt(rs.getString("PRICE")));
 	        	restaurant.setType(Integer.parseInt(rs.getString("TYPE")));
-	        	List<String> cusines = null;	        	
+	        	List<String> cuisines = null;	        	
 	        	List<String> notes = null;
 	        	try{
-	        		cusines = Arrays.asList(rs.getString("CUSINES").split(","));
+	        		cuisines = Arrays.asList(rs.getString("CUISINES").split(","));
 	        		notes = Arrays.asList(rs.getString("NOTES").split(";"));
 	        	}catch(Exception e){
 	        		System.out.println("cusine or notes are null");
 	        	}
-	        	restaurant.setCusines(cusines);
+	        	restaurant.setCuisines(cuisines);
 	        	restaurant.setNotes(notes);
 	        	restaurant.setId(rs.getInt("id"));
 	            restaurantList.add(restaurant);
