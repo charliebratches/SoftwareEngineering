@@ -22,14 +22,14 @@ import java.util.Arrays;
 import java.util.List;
 
 @WebServlet("/DisplayAll")
-public class DisplayAll extends HttpServlet{
+public class WOH_DisplayAll extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	static String             url              = "jdbc:mysql://wheelofhunger.ddns.net:3306/WOHDB";
 	static String             user             = "remote";
 	static String             password         = "1234";
 	static Connection         connection       = null;
 	
-	public DisplayAll(){
+	public WOH_DisplayAll(){
 		super();
 	}
 	
