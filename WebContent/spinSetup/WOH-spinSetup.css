@@ -1,15 +1,3 @@
-body 
-{
-    background-color: #57585b;
-}
-
-.jumbotron
-{
-	background-color: #2550d1;
-	padding-top: 0px;
-    padding-bottom: 0px;
-}
-
 .checkbox
 {
 	
@@ -21,7 +9,8 @@ body
 	overflow-y: scroll; 
 }
 
-#rcorners4 {
+#rcorners4 
+{
     border-radius: 15px 15px 15px 15px;
     background: #73AD21;
     padding: 20px; 
