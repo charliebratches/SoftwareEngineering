@@ -41,7 +41,7 @@ public class RestaurantModel {
 		return this.cuisines;
 	}
 	
-	public void setCusines(List<String> cuisines){
+	public void setCuisines(List<String> cuisines){
 		this.cuisines = cuisines;
 	}
 	
