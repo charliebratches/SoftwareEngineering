@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html>
 
 <head>
@@ -22,23 +25,7 @@
 </head>
 
 <body>
-
-	<nav class="navbar navbar-inverse">
-  	<div class="container-fluid">
-    	<div class="navbar-header">
-      	<a class="navbar-brand" href="#">Wheel of Hunger</a>
-    	</div>
-    	<ul class="nav navbar-nav">
-      	<li><a href="WOH-index.jsp">Home</a></li>
-      	<li class="active"><a href="WOH-addRestaurant.jsp">Add</a></li>
-      	<li><a href="WOH-spinSetup.jsp">Setup Spin</a></li>
-    	</ul>
-    	<ul class="nav navbar-nav navbar-right">
-      	<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      	<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    	</ul>
-  	</div>
-	</nav>
+<%@include file="banner/WOH-banner.html" %>
 	
 	<div class ="container">
 		<div class="row">
