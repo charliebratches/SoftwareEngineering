@@ -81,6 +81,12 @@
 	  							<label><input type="checkbox" value="mexican" class="WOH-addRestaurant-checkbox">Mexican</label>
 							</div>
 						</div>
+						
+					<!-- Notes Text Area -->
+						<div class="form-group">
+  							<label for="WOH-addRestaurants-notesInput">Notes</label>
+  							<textarea class="form-control WOH-addRestaurants-notesInput" rows="5" name="notes"></textarea>
+						</div>
 	  				
 	  				<!-- Submit Button -->
 	  					<button type="button" class="btn btn-default" onclick="formatData()">Submit</button>
