@@ -19,24 +19,9 @@
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
 
-	<nav class="navbar navbar-inverse">
-  	<div class="container-fluid">
-    	<div class="navbar-header">
-      	<a class="navbar-brand" href="#">Wheel of Hunger</a>
-    	</div>
-    	<ul class="nav navbar-nav">
-      	<li class="active"><a href="WOH-index.jsp">Home</a></li>
-      	<li><a href="WOH-addRestaurant.jsp">Add</a></li>
-      	<li><a href="WOH-spinSetup.jsp">Setup Spin</a></li>
-    	</ul>
-    	<ul class="nav navbar-nav navbar-right">
-      	<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      	<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    	</ul>
-  	</div>
-	</nav>
+<body>
+	<%@include file="banner/WOH-banner.html" %>
 	
 	
 
