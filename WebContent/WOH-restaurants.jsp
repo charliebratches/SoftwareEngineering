@@ -25,7 +25,13 @@
 </head>
 
 <body>
-<%@include file="banner/WOH-banner.html" %>
+	<%@ page isELIgnored="false" %>
+	<%@include file="banner/WOH-banner.html" %>
+	<%@ page import ="java.util.ArrayList, restaurantlist.models.restaurantModel" %>
 
+	<%
+	ArrayList<restaurantModel> restaurantList = (ArrayList<restaurantModel>) request.getAttribute("restaurantList");
+	%>
+	
 </body>
 </html>
