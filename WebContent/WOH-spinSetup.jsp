@@ -18,7 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="addRestaurant/WOH-addRestaurant.css">
 	<link rel="stylesheet" type="text/css" href="site/WOH-site.css">
 	
-	<title>Wheel of Hunger - Spin Setup</title>
+	<title>Spin Setup</title>
 </head>
 
 <body>

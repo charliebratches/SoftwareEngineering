@@ -21,7 +21,7 @@
 	<link rel="stylesheet" type="text/css" href="restaurants/WOH-restaurants.css">
 	<link rel="stylesheet" type="text/css" href="site/WOH-site.css">
 	
-	<title>Wheel of Hunger - Restaurants</title>
+	<title>Restaurants</title>
 </head>
 
 <body>

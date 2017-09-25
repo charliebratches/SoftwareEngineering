@@ -22,7 +22,7 @@
 	<link rel="stylesheet" type="text/css" href="addRestaurant/WOH-addRestaurant.css">
 	<link rel="stylesheet" type="text/css" href="site/WOH-site.css">
 	
-	<title>Wheel of Hunger - Add Restaurant</title>
+	<title>Add Restaurant</title>
 </head>
 
 <body>
@@ -31,7 +31,7 @@
 	<div class ="container">
 		<div class="row">
 			<div class="col-sm-10 col-sm-offset-1">
-				<form action = "" method = "POST" class="form-horizontal WOH-addRestaurant-form" id="">
+				<form action = "" method = "POST" class="form-horizontal WOH-addRestaurant-form">
 										
 					<!-- Restaurant Name Textbox -->
 						<div class="form-group">
@@ -59,14 +59,16 @@
 	         			
 	         		<!-- Food Type Dropdown -->
 						<div class="form-group">
-	  					<label class="control-label col-sm-2" for="WOH-addRestaurant-typeInput">Select Food Type</label>
-	  						<div class="col-sm-10">
-	  							<select class="form-control WOH-addRestaurants-typeInput" name="type">
-	    							<option value = "fastFood" >Fast Food</option>
-	    							<option value = "sitDown" >Sit-Down</option>
-	    							<option value = "dessert" >Dessert</option>
-	  							</select>
-	  						</div>
+							<div class="col-sm-2">
+		  						<label class="control-label" for="WOH-addRestaurant-typeInput">Select Food Type</label>
+		  					</div>
+		  					<div class="col-sm-10">
+		  						<select class="form-control WOH-addRestaurants-typeInput" name="type">
+		    						<option value = "fastFood" >Fast Food</option>
+		    						<option value = "sitDown" >Sit-Down</option>
+		    						<option value = "dessert" >Dessert</option>
+		  						</select>
+		  					</div>
 	  					</div>
 	  					
 	  				<!-- Cuisine Type Checkbox -->
