@@ -73,6 +73,7 @@
 	  					
 	  				<!-- Cuisine Type Checkbox -->
 	  					<div class="form-group "> 
+	  						<input type="hidden" name="cuisines" class="WOH-addRestaurant-cuisineInput">
 	  						<div class="checkbox ">
 	  							<label><input type="checkbox" value="american" class="WOH-addRestaurant-checkbox">American</label>
 							</div>
