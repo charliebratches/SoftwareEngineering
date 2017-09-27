@@ -31,7 +31,7 @@
 	<div class ="container">
 		<div class="row">
 			<div class="col-sm-10 col-sm-offset-1">
-				<form action = "" method = "POST" class="form-horizontal WOH-addRestaurant-form">
+				<form action = "Insert" method = "POST" class="form-horizontal WOH-addRestaurant-form">
 										
 					<!-- Restaurant Name Textbox -->
 						<div class="form-group">
@@ -53,7 +53,7 @@
 						<div class="form-group">
 						<label class="control-label col-sm-2" for="WOH-addRestaurant-distanceInput">Distance</label>
 							<div class="col-sm-10">
-	         					<input type = "text" class="form-control WOH-addRestaurant-distanceInput" name = "distance">
+	         					<input type = "text" class="form-control WOH-addRestaurant-distanceInput" value = 0 name = "distance">
 	         				</div>
 	         			</div>
 	         			
