@@ -8,8 +8,10 @@ formatData=function()
 			cuisines+= $(this).val()+",";
 		}
 	});
+	$(".WOH-addRestaurant-cuisineInput").val(cuisines);
 	
-	notes = $(".WOH-addRestaurants-notesInput").val();
+	notes = $(".WOH-addRestaurants-notesTextArea").val();
+	$(".WOH-addRestaurant-notesInput").val(notes);
 	
 	$(".WOH-addRestaurant-form").submit();
 }
