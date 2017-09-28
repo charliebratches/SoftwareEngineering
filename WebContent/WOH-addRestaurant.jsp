@@ -37,7 +37,7 @@
 						<div class="form-group">
 						<label class="control-label col-sm-2" for="WOH-addRestaurants-restaurantNameInput">Restaurant Name</label>
 							<div class="col-sm-10">
-	         					<input type = "text" class="form-control WOH-addRestaurant-restaurantNameInput" name = "name">
+	         					<input type = "text" class="form-control WOH-addRestaurants-restaurantNameInput" name = "name">
 	         				</div>
 	         			</div>
 	         			
@@ -60,13 +60,13 @@
 	         		<!-- Food Type Dropdown -->
 						<div class="form-group">
 							<div class="col-sm-2">
-		  						<label class="control-label" for="WOH-addRestaurant-typeInput">Select Food Type</label>
+		  						<label class="control-label" for="WOH-addRestaurants-typeInput">Select Food Type</label>
 		  					</div>
 		  					<div class="col-sm-10">
 		  						<select class="form-control WOH-addRestaurants-typeInput" name="type">
-		    						<option value = "fastFood" >Fast Food</option>
-		    						<option value = "sitDown" >Sit-Down</option>
-		    						<option value = "dessert" >Dessert</option>
+		    						<option selected="selected" value = "1" >Fast Food</option>
+		    						<option value = "2" >Sit-Down</option>
+		    						<option value = "3" >Dessert</option>
 		  						</select>
 		  					</div>
 	  					</div>
@@ -87,8 +87,9 @@
 						
 					<!-- Notes Text Area -->
 						<div class="form-group">
-  							<label for="WOH-addRestaurants-notesInput">Notes</label>
-  							<textarea class="form-control WOH-addRestaurants-notesInput" rows="5" name="notes"></textarea>
+							<input type="hidden" name="notes" class="WOH-addRestaurant-notesInput">
+  							<label for="WOH-addRestaurants-notesTextArea">Notes</label>
+  							<textarea class="form-control WOH-addRestaurants-notesTextArea" rows="5" name="notesInput"></textarea>
 						</div>
 	  				
 	  				<!-- Submit Button -->

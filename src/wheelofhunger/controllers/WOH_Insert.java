@@ -87,7 +87,6 @@ public class WOH_Insert extends HttpServlet {
 	      try {
 	         String insertSQL = "INSERT INTO restaurants(NAME, PRICE, DISTANCE, TYPE, CUISINES, NOTES)"
 	         		+ "VALUES ('" + name + "', " + price + ", " + distance + ", " + type + ", '" + cuisines +"', '" + notes +"');";
-	         System.out.println(insertSQL);
 	         PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
 	         preparedStatement.executeUpdate();
 	        	         
