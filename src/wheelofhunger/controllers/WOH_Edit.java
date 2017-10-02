@@ -49,9 +49,11 @@ public class WOH_Edit extends HttpServlet {
 			String name = request.getParameter("name");
 		    int price = -1;
 		    int type = -1;
+		    int distance = -1;
 	    	try{
 	    		price = Integer.parseInt(request.getParameter("price"));
 	    		type = Integer.parseInt(request.getParameter("type"));
+	    		distance = Integer.parseInt(request.getParameter("distance"));
 	    	}catch(Exception e){
 	    		System.out.println("fields are null");
 	    	}
@@ -78,7 +80,7 @@ public class WOH_Edit extends HttpServlet {
 		      }
 		      try {
 		         String selectSQL = "UPDATE restaurants "
-		         		+ "SET NAME='" + name + "', PRICE='" + price + "', TYPE='" + type + "', CUISINES='" + cuisines +"', NOTES='" + notes +"' "
+		         		+ "SET NAME='" + name + "', PRICE='" + price + "', TYPE='" + type + "', CUISINES='" + cuisines +"', NOTES='" + notes +"', DISTANCE='" + distance+ " "
          				+ "WHERE id = "+id+";";
 		         PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
 		         preparedStatement.executeUpdate();
