@@ -80,7 +80,7 @@ public class WOH_Edit extends HttpServlet {
 		      }
 		      try {
 		         String selectSQL = "UPDATE restaurants "
-		         		+ "SET NAME='" + name + "', PRICE='" + price + "', TYPE='" + type + "', CUISINES='" + cuisines +"', NOTES='" + notes +"', DISTANCE='" + distance+ " "
+		         		+ "SET NAME='" + name + "', PRICE='" + price + "', TYPE='" + type + "', CUISINES='" + cuisines +"', NOTES='" + notes +"', DISTANCE=" + distance+ " "
          				+ "WHERE id = "+id+";";
 		         PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
 		         preparedStatement.executeUpdate();
