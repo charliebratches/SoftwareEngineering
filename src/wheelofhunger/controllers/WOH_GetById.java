@@ -69,8 +69,9 @@ public class WOH_GetById extends HttpServlet {
 	         while (rs.next()) {
 	        	
 		    	 restaurant.setName(rs.getString("NAME"));
-		    	 restaurant.setPrice(Integer.parseInt(rs.getString("PRICE")));
-		    	 restaurant.setType(Integer.parseInt(rs.getString("TYPE")));
+		    	 restaurant.setPrice(rs.getInt("PRICE"));
+		    	 restaurant.setType(rs.getInt("TYPE"));
+		    	 restaurant.setDistance(rs.getInt("DISTANCE"));
 		    	 List<String> cuisines = null;	        	
 	        	 List<String> notes = null;
 	        	 try{
