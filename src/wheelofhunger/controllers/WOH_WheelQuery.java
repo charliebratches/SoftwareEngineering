@@ -49,8 +49,20 @@ public class WOH_WheelQuery extends HttpServlet {
 	    int distance= -1;
     	try{
     		price = Integer.parseInt(request.getParameter("price"));
+    		
+    		//checks the price value. if it is -1, it sets price to the max value to get all restaurants
+    		//	within the max price range
+    		if (price == -1){
+    			price = 5;
+    		}
     		type = Integer.parseInt(request.getParameter("type"));
     		distance = Integer.parseInt(request.getParameter("distance"));
+    		
+    		//checks the distance value. if it is -1, it sets distance to the max value to get all restaurants
+    		//	within the max distance
+    		if (distance == -1){
+    			distance = 200;
+    		}
     	}catch(Exception e){
     		System.out.println("fields are null");
     	}
@@ -74,8 +86,8 @@ public class WOH_WheelQuery extends HttpServlet {
 	         System.out.println("Failed to make connection!");
 	      }
 	      try {
-	         String selectSQL = "SELECT * FROM contacts "
-	         		+ "WHERE PRICE = "+price+", TYPE="+type+", DISTANCE <="+distance+";";
+	         String selectSQL = "SELECT * FROM restaurants "
+	         		+ "WHERE PRICE <= "+price+", TYPE="+type+", DISTANCE <="+distance+";";
 	         PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
 	         ResultSet rs = preparedStatement.executeQuery();	        	 
 	         while (rs.next()) {
@@ -107,6 +119,7 @@ public class WOH_WheelQuery extends HttpServlet {
 	         
 	         request.setAttribute("restaurantList", restaurantList);
 	         RequestDispatcher rd;
+	         //change rd's destination to whatever the wheel page is called
 	         rd = request.getRequestDispatcher("/Wheel.jsp");
 	         rd.forward(request, response);
 	         
