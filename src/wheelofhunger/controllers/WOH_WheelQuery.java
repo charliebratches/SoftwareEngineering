@@ -107,15 +107,11 @@ public class WOH_WheelQuery extends HttpServlet {
 	        	restaurant.setCuisines(cuisinesList);
 	        	restaurant.setNotes(notesList);
 	        	restaurant.setId(rs.getInt("id"));
-	        	//checks the cuisines to see if there is a match 
-	        	for(int i = 0; i < restaurant.getCuisines().size(); i++){
-	        		for(int j= 0; j< inputCuisines.size(); j++){
-	        			if(restaurant.getCuisines().get(i).equals(inputCuisines.get(j))){
-	        	            restaurantList.add(restaurant);
-	        			}
-	        		}
-	        	}
-	            restaurantList.add(restaurant);
+	        	
+        		//asks if compareCuisine returns true.  If it does, this restaurant is added to the list.
+        		if(compareCuisines(restaurant.getCuisines(), inputCuisines)){
+        			restaurantList.add(restaurant);
+        		}
 	         }
 	         
 	         request.setAttribute("restaurantList", restaurantList);
@@ -135,6 +131,19 @@ public class WOH_WheelQuery extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	//This function loops through the list of inputCuisines and compares them to the cuisines of 
+	//the restaurant.  If one of the restaurant's cuisines is a match, it returns true, adding it to restaurantList.
+	public boolean compareCuisines(List<String> restaurantCuisineList, List<String> inputCuisines){
+		for(int i = 0; i < restaurantCuisineList.size(); i++){
+			for(int j= 0; j< inputCuisines.size(); j++){
+				if(restaurantCuisineList.get(i).equals(inputCuisines.get(j))){
+		            return true;
+				}
+			}
+		}
+		return false;
 	}
 
 }
