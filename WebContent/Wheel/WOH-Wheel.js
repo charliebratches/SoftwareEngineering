@@ -1,5 +1,24 @@
-//options variable is currently just a list of strings. This will be populated from "name" in restaurant model
+var options = [];
+
 var options = ["McDonalds", "Burger King", "Wendys", "Sonic", "KFC"];
+$(document).ready(function(){
+	$.get('../WheelQuery', function(data){
+		console.log(data);
+		data.forEach( function(item){
+			options.push(item);
+			console.log(item.name);
+		});		
+	}).done(function(){		
+		console.log(options.length);
+		console.log("loadData is done");
+		drawRouletteWheel();
+	}).fail(function(){
+		console.log("Ajax failed");
+	});
+});
+
+//options variable is currently just a list of strings. This will be populated from "name" in restaurant model
+
 
 var img1 = document.getElementById("mcdonalds");
 var img2 = document.getElementById("burgerking");
@@ -25,7 +44,7 @@ var spinTimeTotal = 0;
 //ctx is just the blank slate on which we are drawing our arccolorToggle
 
 //colorToggle just switched between colors and images.
-var colorToggle = false;
+var colorToggle = true;
 
 //this just listens for user input. User has to click the spin button. That input ends up here
 document.getElementById("spin").addEventListener("click", spin);
@@ -93,7 +112,7 @@ function drawRouletteWheel() {
 
     //classic helvetica
     ctx.font = 'bold 12px Helvetica, Arial';
-
+    console.log(options.length);
     //The following loop is the most critical part of the code because here we actually draw the circle.
     //Remember that options.length corresponds to the number of restaraunts in the wheel.
     //the angle variable determines the size of each slice of the wheel. Remember that the startAngle is 0.
@@ -103,16 +122,16 @@ function drawRouletteWheel() {
       //ctx.fillStyle = colors[i];
       //
       // var img = document.getElementById("lamp")
-      var pat = ctx.createPattern(images[i], 'repeat');
+      //var pat = ctx.createPattern(images[i], 'repeat');
       //
       //var pat = ctx.createPattern(images[i], 'repeat');
       //ctx.fillStyle = getColor(i, options.length);
       //ctx.fillstyle = pat;
-      if (colorToggle == true){
+      //if (colorToggle == true){
         ctx.fillStyle = getColor(i, options.length);
-      }else if (colorToggle == false){
-        ctx.fillStyle = pat;
-      }
+      //}else if (colorToggle == false){
+        //ctx.fillStyle = pat;
+      //}
       
      
       
@@ -137,7 +156,7 @@ function drawRouletteWheel() {
       //rotation definition
       ctx.rotate(angle + arc / 2 + Math.PI / 2);
       //grab text from the options array
-      var text = options[i];
+      var text = options[i].name;
       ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
       ctx.restore();
     } 
@@ -189,7 +208,7 @@ function stopRotateWheel() {
   var index = Math.floor((360 - degrees % 360) / arcd);
   ctx.save();
   ctx.font = 'bold 30px Helvetica, Arial';
-  var text = options[index]
+  var text = options[index];
   ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
   ctx.restore();
 }
@@ -220,4 +239,4 @@ function toggle() {
   drawRouletteWheel();
 }
 //call our function! Nothing works unless we call this first
-drawRouletteWheel();
+//drawRouletteWheel();
