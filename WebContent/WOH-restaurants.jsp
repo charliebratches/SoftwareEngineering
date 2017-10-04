@@ -27,10 +27,10 @@
 <body>
 	<%@ page isELIgnored="false" %>
 	<%@include file="banner/WOH-banner.html" %>
-	<%@ page import ="java.util.ArrayList, restaurantlist.models.restaurantModel" %>
+	<%@ page import ="java.util.ArrayList, wheelofhunger.models.RestaurantModel" %>
 
 	<%
-	ArrayList<restaurantModel> restaurantList = (ArrayList<restaurantModel>) request.getAttribute("restaurantList");
+	ArrayList<RestaurantModel> restaurantList = (ArrayList<RestaurantModel>) request.getAttribute("restaurantList");
 	%>
 	
 </body>
