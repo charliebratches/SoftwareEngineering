@@ -16,5 +16,3 @@ formatData=function()
 	$(".WOH-addRestaurant-form").submit();
 }
 
-
-
