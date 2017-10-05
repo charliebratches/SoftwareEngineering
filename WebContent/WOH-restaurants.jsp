@@ -44,7 +44,7 @@
 				<th class ="col-sm-3 CL-ContactList--Button-Panel">
 					<div class="pull-right">
 												
-						<a href="NewContact.jsp" class="glyphicon glyphicon-plus btn btn-success CL-ContactList--New-Contact-Button"></a>
+						<a href="WOH-addRestaurant.jsp" class="glyphicon glyphicon-plus btn btn-success CL-ContactList--New-Contact-Button"></a>
 					</div>
 					
 				</th>
