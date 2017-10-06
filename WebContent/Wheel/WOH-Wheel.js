@@ -1,16 +1,15 @@
 var options = [];
-
-var options = ["McDonalds", "Burger King", "Wendys", "Sonic", "KFC"];
+//classic arc length formula from math class
+var arc;
+//var options = ["McDonalds", "Burger King", "Wendys", "Sonic", "KFC"];
 $(document).ready(function(){
 	$.get('../WheelQuery', function(data){
 		console.log(data);
 		data.forEach( function(item){
 			options.push(item);
-			console.log(item.name);
 		});		
-	}).done(function(){		
-		console.log(options.length);
-		console.log("loadData is done");
+	}).done(function(){	
+		arc = Math.PI / (options.length / 2);
 		drawRouletteWheel();
 	}).fail(function(){
 		console.log("Ajax failed");
@@ -31,8 +30,7 @@ var images = [img1, img2, img3, img4, img5]
 
 //startangle is just an arbitrary starting point fom which t draw the radian
 var startAngle = 0;
-//classic arc length formula from math class
-var arc = Math.PI / (options.length / 2);
+
 //Couldn't get this working. Leaving it null
 var spinTimeout = null;
 //spinArcStart determines the degree of the starting animation which plays quickly when the page loads
@@ -112,12 +110,10 @@ function drawRouletteWheel() {
 
     //classic helvetica
     ctx.font = 'bold 12px Helvetica, Arial';
-    console.log(options.length);
     //The following loop is the most critical part of the code because here we actually draw the circle.
     //Remember that options.length corresponds to the number of restaraunts in the wheel.
     //the angle variable determines the size of each slice of the wheel. Remember that the startAngle is 0.
     for(var i = 0; i < options.length; i++) {
- 
       var angle = startAngle + i * arc;
       //ctx.fillStyle = colors[i];
       //
@@ -208,7 +204,7 @@ function stopRotateWheel() {
   var index = Math.floor((360 - degrees % 360) / arcd);
   ctx.save();
   ctx.font = 'bold 30px Helvetica, Arial';
-  var text = options[index];
+  var text = options[index].name;
   ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
   ctx.restore();
 }
@@ -238,5 +234,3 @@ function toggle() {
   }
   drawRouletteWheel();
 }
-//call our function! Nothing works unless we call this first
-//drawRouletteWheel();
