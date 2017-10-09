@@ -63,15 +63,12 @@ public class WOH_WheelQuery extends HttpServlet {
     		//checks the distance value. if it is -1, it sets distance to the max value to get all restaurants
     		//	within the max distance
     		if (distance == -1){
-    			distance = 200;
+    			distance = 100;
     		}
     	}catch(Exception e){
     		System.out.println("fields are null");
     	}
-	    price = 5;
-	    type = 1;
-	    distance = 200;
-    	List<String> inputCuisines = null;//Arrays.asList(request.getParameter("cuisines").split(","));		
+    	List<String> inputCuisines = Arrays.asList(request.getParameter("cuisines").split(","));		
 	     
 	      try {
 	    	  Class.forName("com.mysql.jdbc.Driver");

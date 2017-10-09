@@ -1,10 +1,8 @@
 var options = [];
 //classic arc length formula from math class
 var arc;
-//var options = ["McDonalds", "Burger King", "Wendys", "Sonic", "KFC"];
 $(document).ready(function(){
 	$.get('../WheelQuery', function(data){
-		console.log(data);
 		data.forEach( function(item){
 			options.push(item);
 		});		
@@ -92,7 +90,6 @@ function getImage(item, maxitem) {
 //appear close to the outside edge of the circle.
 //insideRadius determines how big the "donut hole" is, in pixels. 
 function drawRouletteWheel() {
-
   var img = document.getElementById("lamp");
   var canvas = document.getElementById("canvas");
   if (canvas.getContext) {
