@@ -1,6 +1,7 @@
 package wheelofhunger.controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import wheelofhunger.models.RestaurantModel;
+import wheelofhunger.util.JSONconverter;
 
 /**
  * Servlet implementation class WOH_WheelQuery
@@ -61,12 +63,11 @@ public class WOH_WheelQuery extends HttpServlet {
     		//checks the distance value. if it is -1, it sets distance to the max value to get all restaurants
     		//	within the max distance
     		if (distance == -1){
-    			distance = 200;
+    			distance = 100;
     		}
     	}catch(Exception e){
     		System.out.println("fields are null");
     	}
-	    
     	List<String> inputCuisines = Arrays.asList(request.getParameter("cuisines").split(","));		
 	     
 	      try {
@@ -87,7 +88,8 @@ public class WOH_WheelQuery extends HttpServlet {
 	      }
 	      try {
 	         String selectSQL = "SELECT * FROM restaurants "
-	         		+ "WHERE PRICE <= "+price+", TYPE="+type+", DISTANCE <="+distance+";";
+	         		+ "WHERE PRICE <= "+price+" AND TYPE="+type+" AND DISTANCE <="+distance+";";
+	         System.out.println(selectSQL);
 	         PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
 	         ResultSet rs = preparedStatement.executeQuery();	        	 
 	         while (rs.next()) {
@@ -107,18 +109,26 @@ public class WOH_WheelQuery extends HttpServlet {
 	        	restaurant.setCuisines(cuisinesList);
 	        	restaurant.setNotes(notesList);
 	        	restaurant.setId(rs.getInt("id"));
-	        	
-        		//asks if compareCuisine returns true.  If it does, this restaurant is added to the list.
-        		if(compareCuisines(restaurant.getCuisines(), inputCuisines)){
-        			restaurantList.add(restaurant);
-        		}
+	        	if(inputCuisines == null){
+	        		restaurantList.add(restaurant);
+	        	}else{
+	        		//asks if compareCuisine returns true.  If it does, this restaurant is added to the list.
+	        		if(compareCuisines(restaurant.getCuisines(), inputCuisines)){
+	        			System.out.println(restaurant.getName());
+	        			restaurantList.add(restaurant);
+	        		}
+	        	}        		
 	         }
 	         
-	         request.setAttribute("restaurantList", restaurantList);
-	         RequestDispatcher rd;
-	         //change rd's destination to whatever the wheel page is called
-	         rd = request.getRequestDispatcher("/Wheel.jsp");
-	         rd.forward(request, response);
+	         response.setContentType("application/json");
+	         PrintWriter out = response.getWriter();
+	         
+	         out.println(JSONconverter.convert(restaurantList));
+	         out.close();
+	         
+	        /* RequestDispatcher rd;
+	         rd = request.getRequestDispatcher("/WOH-Wheel.html");
+	         rd.forward(request, response);*/
 	         
 	      } catch (SQLException e) {
 	         e.printStackTrace();
