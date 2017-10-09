@@ -17,9 +17,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import wheelofhunger.models.RestaurantModel;
-import wheelofhunger.util.JSONconverter;
 
 /**
  * Servlet implementation class WOH_WheelQuery
@@ -44,7 +44,8 @@ public class WOH_WheelQuery extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
+		HttpSession session = request.getSession(true);
+    	response.setContentType("text/html;charset=UTF-8");
 		List<RestaurantModel> restaurantList = new ArrayList<>();
 	    int price = -1;
 	    int type = -1;
@@ -68,7 +69,7 @@ public class WOH_WheelQuery extends HttpServlet {
     	}catch(Exception e){
     		System.out.println("fields are null");
     	}
-    	List<String> inputCuisines = Arrays.asList(request.getParameter("cuisines").split(","));		
+    	List<String> inputCuisines =Arrays.asList(request.getParameter("cuisines").split(","));		
 	     
 	      try {
 	    	  Class.forName("com.mysql.jdbc.Driver");
@@ -118,17 +119,14 @@ public class WOH_WheelQuery extends HttpServlet {
 	        			restaurantList.add(restaurant);
 	        		}
 	        	}        		
-	         }
+	         } 
+	         session.setAttribute("restaurantList", restaurantList);
+	         RequestDispatcher rd;
+	         rd = request.getRequestDispatcher("/Wheel.jsp");
+	         rd.forward(request, response);
 	         
-	         response.setContentType("application/json");
-	         PrintWriter out = response.getWriter();
 	         
-	         out.println(JSONconverter.convert(restaurantList));
-	         out.close();
 	         
-	        /* RequestDispatcher rd;
-	         rd = request.getRequestDispatcher("/WOH-Wheel.html");
-	         rd.forward(request, response);*/
 	         
 	      } catch (SQLException e) {
 	         e.printStackTrace();

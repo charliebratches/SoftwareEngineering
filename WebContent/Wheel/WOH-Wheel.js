@@ -2,7 +2,8 @@ var options = [];
 //classic arc length formula from math class
 var arc;
 $(document).ready(function(){
-	$.get('../WheelQuery', function(data){
+	$.get('GetWheelQuery', function(data){
+		console.log(data);
 		data.forEach( function(item){
 			options.push(item);
 		});		

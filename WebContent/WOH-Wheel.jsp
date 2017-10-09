@@ -1,10 +1,11 @@
 <!doctype html>
-
+<html>
 
 <head>
-<link rel="stylesheet" href="WOH-Wheel.css?v=1.0">
+<link rel="stylesheet" href="Wheel/WOH-Wheel.css?">
 <!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="Wheel/WOH-Wheel.js"></script>
 </head>
 <body>
 
@@ -17,5 +18,5 @@
 <img src="WOH-Images/wendys.jpg" id="wendys" width="100" height="100">
 <img src="WOH-Images/sonic.jpg" id="sonic" width="100" height="100">
 <img src="WOH-Images/kfc.jpg" id="kfc" width="100" height="100">
-<script src="WOH-Wheel.js"></script>
+
 </html>
