@@ -87,7 +87,7 @@ public class WOH_GetById extends HttpServlet {
 	         
 	         request.setAttribute("restaurant", restaurant);
 	         RequestDispatcher rd;
-	         rd = request.getRequestDispatcher("/EditRestaurant.jsp");
+	         rd = request.getRequestDispatcher("/WOH-editRestaurant.jsp");
 	         rd.forward(request, response);
 	         
 	      } catch (SQLException e) {
