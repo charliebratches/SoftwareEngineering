@@ -1,0 +1,13 @@
+.WOH-RestaurantList--New-Restaurant-Button{
+	margin-left: 0.250em;
+}
+
+.WOH-RestaurantList--Button-Panel{
+	white-space:nowrap;
+}
+
+.WOH-RestaurantList--Edit-Form{
+	float:left;
+	white-space:nowrap;
+	margin-right: 0.250em;
+}
