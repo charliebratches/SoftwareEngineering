@@ -1,3 +1,9 @@
-body{
-	background-color: #c1d9ff;
+.WOH-Wheel--WheelContainer{
+	margin-bottom:1em;
+	margin-top:0.5em;
+}
+
+
+.WOH-Wheel--ButtonPanel{
+	margin-top:0.5em;
 }
