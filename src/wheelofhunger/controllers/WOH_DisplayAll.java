@@ -83,7 +83,7 @@ public class WOH_DisplayAll extends HttpServlet{
 	         // ContactList.jsp and sending the data to that page
 	         request.setAttribute("restaurantList", restaurantList);
 	         RequestDispatcher rd;
-	         rd = request.getRequestDispatcher("/WOH-restaurants.jsp");
+	         rd = request.getRequestDispatcher("/WOH-restaurantList.jsp");
 	         rd.forward(request, response);
 	         
 	      } catch (SQLException e) {
