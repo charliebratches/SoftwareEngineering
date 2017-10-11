@@ -9,6 +9,7 @@ public class RestaurantModel {
 	private List<String> cuisines;
 	private List<String> notes;
 	private int id;
+	private int distance;
 
 	public RestaurantModel(){
 	}
@@ -59,5 +60,13 @@ public class RestaurantModel {
 	
 	public void setId(int id){
 		this.id = id;
+	}
+	
+	public int getDistance(){
+		return this.distance;
+	}
+	
+	public void setDistance(int distance){
+		this.distance = distance;
 	}
 }
