@@ -2,21 +2,29 @@
 <html>
 
 <head>
-<link rel="stylesheet" href="Wheel/WOH-Wheel.css?">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="Wheel/WOH-Wheel.css">
+<link rel="stylesheet" href="site/WOH-site.css">
 <!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="Wheel/WOH-Wheel.js"></script>
+	
 </head>
 <body>
-
-<input type="button" value="spin" style="float:left;" id='spin' />
-<input type="button" value="colorToggle" style="float:left;" id='colorToggle'/>
-<canvas id="canvas" width="800" height="800" style="float: center;"></canvas>
+	<%@include file="banner/WOH-banner.html" %>	
+	<div class="container WOH-Wheel--WheelContainer">
+		<div class="row">
+			<div class="text-center">
+				<canvas id="canvas" width="550" height="550"></canvas>
+				<script src="Wheel/WOH-Wheel.js"></script>
+			</div>
+		</div>
+		<div class="row">
+			<div class="WOH-Wheel--ButtonPanel text-center">
+				<button type="button" value="spin"  onClick="spin()" class="btn btn-default">Spin</button>
+				<button type="button" value="colorToggle" onclick="colorToggle()" class="btn btn-default">Color Toggle</button>
+			</div>
+		</div>
+	 </div>
 </body>
-<img src="WOH-Images/mcdonalds.jpg" id="mcdonalds" width="100" height="100">
-<img src="WOH-Images/burgerking.jpg" id="burgerking" width="100" height="100">
-<img src="WOH-Images/wendys.jpg" id="wendys" width="100" height="100">
-<img src="WOH-Images/sonic.jpg" id="sonic" width="100" height="100">
-<img src="WOH-Images/kfc.jpg" id="kfc" width="100" height="100">
-
 </html>

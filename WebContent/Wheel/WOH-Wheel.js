@@ -1,6 +1,7 @@
 var options = [];
 //classic arc length formula from math class
 var arc;
+
 $(document).ready(function(){
 	$.get('GetWheelQuery', function(data){
 		console.log(data);
@@ -17,15 +18,6 @@ $(document).ready(function(){
 
 //options variable is currently just a list of strings. This will be populated from "name" in restaurant model
 
-
-var img1 = document.getElementById("mcdonalds");
-var img2 = document.getElementById("burgerking");
-var img3 = document.getElementById("wendys");
-var img4 = document.getElementById("sonic");
-var img5 = document.getElementById("kfc");
-
-
-var images = [img1, img2, img3, img4, img5]
 
 //startangle is just an arbitrary starting point fom which t draw the radian
 var startAngle = 0;
@@ -44,8 +36,8 @@ var spinTimeTotal = 0;
 var colorToggle = true;
 
 //this just listens for user input. User has to click the spin button. That input ends up here
-document.getElementById("spin").addEventListener("click", spin);
-document.getElementById("colorToggle").addEventListener("click", toggle);
+//document.getElementById("spin").addEventListener("click", spin);
+//document.getElementById("colorToggle").addEventListener("click", toggle);
 
 
 //This is a nifty formula for converting characters to HEX for conversion to RGB colors
@@ -92,7 +84,7 @@ function getImage(item, maxitem) {
 //insideRadius determines how big the "donut hole" is, in pixels. 
 function drawRouletteWheel() {
   var img = document.getElementById("lamp");
-  var canvas = document.getElementById("canvas");
+  var canvas = $("#canvas").get(0);
   if (canvas.getContext) {
     var outsideRadius = 250;
     var textRadius = 145;
