@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">	
 
 	<link rel="stylesheet" type="text/css" href="site/WOH-site.css"/>
+	<link rel="stylesheet" type="text/css" href="restaurantList/WOH-restaurantList.css"/>
 
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -64,6 +65,13 @@
 				<th class ="col-sm-2">Price</th>
 
 				<th class ="col-sm-1"></th>
+				<th class ="col-sm-3 WOH-RestaurantList--Button-Panel">
+					<div class="pull-right">
+											
+						<a href="WOH-addRestaurant.jsp" class="glyphicon glyphicon-plus btn btn-success WOH-RestaurantList--New-Restaurant-Button"></a>
+					</div>
+					
+				</th>
 
 			</tr>
 
