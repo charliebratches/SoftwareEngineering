@@ -81,13 +81,14 @@ public class WOH_GetById extends HttpServlet {
 	        		 System.out.println("cusine or notes are null");
 	        	 }
 	        	 restaurant.setCuisines(cuisines);
+	        
 	        	 restaurant.setNotes(notes);
 	        	 restaurant.setId(rs.getInt("id"));
 	         }
 	         
 	         request.setAttribute("restaurant", restaurant);
 	         RequestDispatcher rd;
-	         rd = request.getRequestDispatcher("/EditRestaurant.jsp");
+	         rd = request.getRequestDispatcher("/WOH-editRestaurant.jsp");
 	         rd.forward(request, response);
 	         
 	      } catch (SQLException e) {

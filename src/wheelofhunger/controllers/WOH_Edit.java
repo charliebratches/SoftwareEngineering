@@ -59,9 +59,10 @@ public class WOH_Edit extends HttpServlet {
 	    	}
 		    
 	    	String cuisines = request.getParameter("cuisines");
+	    	System.out.println("Cuisines: " + cuisines);
 			String notes = request.getParameter("notes");
+			System.out.println("notes: " + notes);
 			int id = Integer.parseInt(request.getParameter("id"));
-		     
 		      try {
 		    	  Class.forName("com.mysql.jdbc.Driver");
 		      } catch (ClassNotFoundException e) {
@@ -82,6 +83,7 @@ public class WOH_Edit extends HttpServlet {
 		         String selectSQL = "UPDATE restaurants "
 		         		+ "SET NAME='" + name + "', PRICE='" + price + "', TYPE='" + type + "', CUISINES='" + cuisines +"', NOTES='" + notes +"', DISTANCE=" + distance+ " "
          				+ "WHERE id = "+id+";";
+		         System.out.println("select: " + selectSQL);
 		         PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
 		         preparedStatement.executeUpdate();
 		        	         
