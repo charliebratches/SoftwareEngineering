@@ -23,9 +23,9 @@ formatData=function()
 	});
 	$(".WOH-spinSetup-cuisineInput").val(cuisines);
 	
-	distanceValue = distanceValue / .00062137;
+	//distanceValue = distanceValue / .00062137;
 	$(".WOH-spinSetup-distanceHiddenInput").val(distanceValue);
-	
+	console.log(distanceValue);
 	$(".WOH-spinSetup-form").submit();
 }
 
