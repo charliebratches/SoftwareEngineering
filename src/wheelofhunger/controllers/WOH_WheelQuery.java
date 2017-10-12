@@ -51,26 +51,25 @@ public class WOH_WheelQuery extends HttpServlet {
 	    int type = -1;
 	    int distance= -1;
     	try{
-    		price = Integer.parseInt(request.getParameter("price"));
-    		
-    		//checks the price value. if it is -1, it sets price to the max value to get all restaurants
-    		//	within the max price range
-    		if (price == -1){
-    			price = 5;
-    		}
+    		price = Integer.parseInt(request.getParameter("price")); 		
     		type = Integer.parseInt(request.getParameter("type"));
     		distance = Integer.parseInt(request.getParameter("distance"));
     		
+    		
+    	}catch(Exception e){
+    		System.out.println("fields are null");
     		//checks the distance value. if it is -1, it sets distance to the max value to get all restaurants
     		//	within the max distance
     		if (distance == -1){
     			distance = 100;
     		}
-    	}catch(Exception e){
-    		System.out.println("fields are null");
+    		//checks the price value. if it is -1, it sets price to the max value to get all restaurants
+    		//	within the max price range
+    		if (price == -1){
+    			price = 5;
+    		}
     	}
-    	List<String> inputCuisines =Arrays.asList(request.getParameter("cuisines").split(","));		
-	     
+    	List<String> inputCuisines =Arrays.asList(request.getParameter("cuisines").split(","));		     
 	      try {
 	    	  Class.forName("com.mysql.jdbc.Driver");
 	      } catch (ClassNotFoundException e) {
@@ -90,7 +89,6 @@ public class WOH_WheelQuery extends HttpServlet {
 	      try {
 	         String selectSQL = "SELECT * FROM restaurants "
 	         		+ "WHERE PRICE <= "+price+" AND TYPE="+type+" AND DISTANCE <="+distance+";";
-	         System.out.println(selectSQL);
 	         PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
 	         ResultSet rs = preparedStatement.executeQuery();	        	 
 	         while (rs.next()) {
@@ -110,19 +108,18 @@ public class WOH_WheelQuery extends HttpServlet {
 	        	restaurant.setCuisines(cuisinesList);
 	        	restaurant.setNotes(notesList);
 	        	restaurant.setId(rs.getInt("id"));
-	        	if(inputCuisines == null){
+	        	if(inputCuisines.get(0).equals("")){
 	        		restaurantList.add(restaurant);
 	        	}else{
 	        		//asks if compareCuisine returns true.  If it does, this restaurant is added to the list.
 	        		if(compareCuisines(restaurant.getCuisines(), inputCuisines)){
-	        			System.out.println(restaurant.getName());
 	        			restaurantList.add(restaurant);
 	        		}
 	        	}        		
 	         } 
 	         session.setAttribute("restaurantList", restaurantList);
 	         RequestDispatcher rd;
-	         rd = request.getRequestDispatcher("/Wheel.jsp");
+	         rd = request.getRequestDispatcher("/WOH-Wheel.jsp");
 	         rd.forward(request, response);
 	         
 	         
@@ -146,7 +143,7 @@ public class WOH_WheelQuery extends HttpServlet {
 	public boolean compareCuisines(List<String> restaurantCuisineList, List<String> inputCuisines){
 		for(int i = 0; i < restaurantCuisineList.size(); i++){
 			for(int j= 0; j< inputCuisines.size(); j++){
-				if(restaurantCuisineList.get(i).equals(inputCuisines.get(j))){
+				if(restaurantCuisineList.get(i).equalsIgnoreCase(inputCuisines.get(j))){
 		            return true;
 				}
 			}
