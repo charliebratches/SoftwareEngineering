@@ -55,9 +55,13 @@ public class WOH_Insert extends HttpServlet {
 		String name = request.getParameter("name");
 	    int price = -1;
 	    int type = -1;
+	    int distance = -1;
+	    
     	try{
     		price = Integer.parseInt(request.getParameter("price"));
     		type = Integer.parseInt(request.getParameter("type"));
+    		distance = Integer.parseInt(request.getParameter("distance"));
+    		
     	}catch(Exception e){
     		System.out.println("fields are null");
     	}
@@ -81,9 +85,9 @@ public class WOH_Insert extends HttpServlet {
 	         System.out.println("Failed to make connection!");
 	      }
 	      try {
-	         String selectSQL = "INSERT INTO restaurants(NAME, PRICE, TYPE, CUISINES, NOTES)"
-	         		+ "VALUES ('" + name + "', " + price + ", " + type + ", '" + cuisines +"', '" + notes +"');";
-	         PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+	         String insertSQL = "INSERT INTO restaurants(NAME, PRICE, DISTANCE, TYPE, CUISINES, NOTES)"
+	         		+ "VALUES ('" + name + "', " + price + ", " + distance + ", " + type + ", '" + cuisines +"', '" + notes +"');";
+	         PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
 	         preparedStatement.executeUpdate();
 	        	         
 	      } catch (SQLException e) {

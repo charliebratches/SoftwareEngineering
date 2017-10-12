@@ -15,13 +15,14 @@
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">	
 
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Site.css"/>
+	<link rel="stylesheet" type="text/css" href="site/WOH-site.css"/>
+	<link rel="stylesheet" type="text/css" href="restaurantList/WOH-restaurantList.css"/>
 
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  	<script type="text/javascript" src="RestaurantList.js"></script>
+  	<script type="text/javascript" src="restaurantList/WOH-restaurantList.js"></script>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
@@ -64,6 +65,13 @@
 				<th class ="col-sm-2">Price</th>
 
 				<th class ="col-sm-1"></th>
+				<th class ="col-sm-3 WOH-RestaurantList--Button-Panel">
+					<div class="pull-right">
+											
+						<a href="WOH-addRestaurant.jsp" class="glyphicon glyphicon-plus btn btn-success WOH-RestaurantList--New-Restaurant-Button"></a>
+					</div>
+					
+				</th>
 
 			</tr>
 
@@ -83,14 +91,14 @@
 
 					<tr>
 
-						<td class ="col-sm-2">${model.getRestaurnatName()}</td>
+						<td class ="col-sm-2">${model.getName()}</td>
 
 						<td class ="col-sm-2">${model.getType()}</td>
 
 						<td class ="col-sm-2">${model.getPrice()}</td>
 						
 						<td class ="col-sm-1"></td>
-
+						<td class ="col-sm-3">
 							<div class="pull-right">
 								<form action="GetById" method="GET" class="WOH-RestaurantList--Edit-Form">
 									<input type="hidden" name="id" value="${model.getId() }">
@@ -99,7 +107,7 @@
 								<button class="glyphicon glyphicon-trash btn btn-danger" data-toggle="modal"
 									data-target="#WOH-RestaurantList--Delete-Modal" onclick="setId(${model.getId()})"></button>
 							</div>							
-
+						</td>
 						
 					</tr>					
 
@@ -124,13 +132,15 @@
         <h4 class="modal-title text-center">Deletion Confirmation</h4>
       </div>
       <div class="modal-body">
-        <p class ="text-center">Are you sure you want to delete this contact?</p>    
+        <p class ="text-center">Are you sure you want to delete this restaurant?</p>    
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" onclick="setId(0)">Cancel</button>
         <button class="btn btn-danger" onclick="deleteById()">Confirm</button>
       </div>
     </div>
+  </div>
+</div>
 
 </body>
 
