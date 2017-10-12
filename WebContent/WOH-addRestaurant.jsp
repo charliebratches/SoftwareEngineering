@@ -34,13 +34,15 @@
 <%@include file="banner/WOH-banner.html" %>
 	
 	<div class ="container-fluid">
+		
 		<div class="row-fluid">
 			<div class="col-sm-10 col-sm-offset-1">
+			<h1 class="WOH-addRestaurant--Title">New Restaurant</h1>
 				<form action = "Insert" method = "POST" class="form-horizontal WOH-addRestaurant-form">
 					<div class = "col-sm-10">						
 						<!-- Restaurant Name Textbox -->
 							<div class="form-group">
-							<label class="control-label col-sm-2" for="WOH-addRestaurants-restaurantNameInput">Restaurant Name</label>
+							<label class="control-label col-sm-2" for="WOH-addRestaurants-restaurantNameInput">Name</label>
 								<div class="col-sm-10">
 		         					<input type = "text" class="form-control WOH-addRestaurants-restaurantNameInput" name = "name">
 		         				</div>
@@ -53,7 +55,8 @@
 			  					</div>
 			  					<div class="col-sm-10">
 			  						<select class="form-control WOH-addRestaurant-priceInput" name="price">
-			    						<option selected="selected" value = "1" >$</option>
+			    						<option selected="selected" value = "1" >-- Price --</option>
+			    						<option value = "1" >$</option>
 			    						<option value = "2" >$$</option>
 			    						<option value = "3" >$$$</option>
 			    						<option value = "4" >$$$$</option>
