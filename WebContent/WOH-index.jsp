@@ -13,9 +13,6 @@
 
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="addRestaurant/addRestaurant.js"></script>
-	
-	<link rel="stylesheet" type="text/css" href="addRestaurant/WOH-addRestaurant.css">
 	<link rel="stylesheet" type="text/css" href="site/WOH-site.css">
 	
 	<title>Wheel of Hunger</title>
