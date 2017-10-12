@@ -81,6 +81,7 @@ public class WOH_GetById extends HttpServlet {
 	        		 System.out.println("cusine or notes are null");
 	        	 }
 	        	 restaurant.setCuisines(cuisines);
+	        
 	        	 restaurant.setNotes(notes);
 	        	 restaurant.setId(rs.getInt("id"));
 	         }

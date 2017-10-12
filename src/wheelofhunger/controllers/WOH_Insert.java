@@ -57,12 +57,14 @@ public class WOH_Insert extends HttpServlet {
 	    int type = -1;
 	    int distance = -1;
 	    
-    	try{
+    	try
+    	{
     		price = Integer.parseInt(request.getParameter("price"));
     		type = Integer.parseInt(request.getParameter("type"));
     		distance = Integer.parseInt(request.getParameter("distance"));
     		
-    	}catch(Exception e){
+    	}
+    	catch(Exception e){
     		System.out.println("fields are null");
     	}
 	    

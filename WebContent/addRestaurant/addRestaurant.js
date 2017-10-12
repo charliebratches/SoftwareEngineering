@@ -28,7 +28,6 @@ formatData=function()
 	notes = $(".WOH-addRestaurants-notesTextArea").val();
 	$(".WOH-addRestaurant-notesInput").val(notes);
 	
-	distanceValue = distanceValue / .00062137;
 	$(".WOH-addRestaurant-distanceHiddenInput").val(distanceValue);
 	
 	$(".WOH-addRestaurant-form").submit();
