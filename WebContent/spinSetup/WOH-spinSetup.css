@@ -1,13 +1,35 @@
+/* enable absolute positioning */
+.inner-addon { 
+    position: relative; 
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+.WOH-spinSetup--Title{
+	margin-bottom:1em;
+}
+
 .WOH-spinSetup-cuisineCheckboxGroup
 {	
 	height: 24em;
 	width: auto;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
 }
 .WOH-spinSetup-cuisineCheckboxPanel{
-	overflow-y:scroll;
-	height: 21.5em;
+	overflow-y:auto;
+	height: 100%;
 }
 
 .WOH-spinSetup-distanceLabel
@@ -29,6 +51,11 @@
 {
 	margin-right: -7px;
 	margin-left: -7px;
+}
+
+.WOH-spinSetup-cuisineCheckboxPanelBody{
+	padding:0;
+	padding-left:0.5em;
 }
 
 /* https://github.com/seiyria/bootstrap-slider */

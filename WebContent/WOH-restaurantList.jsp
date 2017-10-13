@@ -51,73 +51,70 @@
 <div class ="container">
 
 	<h1 class = "WOH-RestaurantList--Title">Restaurants</h1>
-
-	<table class ="table table-striped">
-
-		<thead>
-
-			<tr>
-
-				<th class ="col-sm-2">Restaurant</th>
-
-				<th class ="col-sm-2">Type</th>
-
-				<th class ="col-sm-2">Price</th>
-
-				<th class ="col-sm-1"></th>
-				<th class ="col-sm-3 WOH-RestaurantList--Button-Panel">
-					<div class="pull-right">
-											
-						<a href="WOH-addRestaurant.jsp" class="glyphicon glyphicon-plus btn btn-success WOH-RestaurantList--New-Restaurant-Button"></a>
-					</div>
-					
-				</th>
-
-			</tr>
-
-		</thead>
-
-		<tbody>
-
-			
-
-			<c:if test="${restaurantList !=null }">
-
-				<!-- This forEach statement is saying that each item within contactList is called model
-
-				 and it then loops through contactList -->
-
-				<c:forEach items = "${restaurantList}" var="model">
-
-					<tr>
-
-						<td class ="col-sm-2">${model.getName()}</td>
-
-						<td class ="col-sm-2">${model.getType()}</td>
-
-						<td class ="col-sm-2">${model.getPrice()}</td>
+	<div class="panel panel-default">
+		<table class ="table table-striped">
+	
+			<thead>
+	
+				<tr class = "WOH-RestaurantList--TableHeadRow">
+	
+					<th class ="col-sm-2">Name</th>
+	
+					<th class ="col-sm-2">Type</th>
+	
+					<th class ="col-sm-2">Price</th>
+	
+					<th class ="col-sm-1"></th>
+					<th class ="col-sm-3 WOH-RestaurantList--Button-Panel">
+						<div class="pull-right">
+												
+							<a href="WOH-addRestaurant.jsp" class="glyphicon glyphicon-plus btn btn-success WOH-RestaurantList--New-Restaurant-Button"></a>
+						</div>
 						
-						<td class ="col-sm-1"></td>
-						<td class ="col-sm-3">
-							<div class="pull-right">
-								<form action="GetById" method="GET" class="WOH-RestaurantList--Edit-Form">
-									<input type="hidden" name="id" value="${model.getId() }">
-									<button type="submit" class="glyphicon glyphicon-pencil btn btn-primary"></button>
-								</form>
-								<button class="glyphicon glyphicon-trash btn btn-danger" data-toggle="modal"
-									data-target="#WOH-RestaurantList--Delete-Modal" onclick="setId(${model.getId()})"></button>
-							</div>							
-						</td>
-						
-					</tr>					
-
-				</c:forEach>
-
-			</c:if>
-
-		</tbody>
-
-	</table>
+					</th>
+	
+				</tr>
+	
+			</thead>
+	
+			<tbody>
+	
+				
+	
+				<c:if test="${restaurantList !=null }">
+	
+					<c:forEach items = "${restaurantList}" var="model">
+	
+						<tr>
+	
+							<td class ="col-sm-2">${model.getName()}</td>
+	
+							<td class ="col-sm-2">${model.getType()}</td>
+	
+							<td class ="col-sm-2">${model.getPrice()}</td>
+							
+							<td class ="col-sm-1"></td>
+							<td class ="col-sm-3">
+								<div class="pull-right">
+									<form action="GetById" method="GET" class="WOH-RestaurantList--Edit-Form">
+										<input type="hidden" name="id" value="${model.getId() }">
+										<button type="submit" class="glyphicon glyphicon-pencil btn btn-primary"></button>
+									</form>
+									<button class="glyphicon glyphicon-trash btn btn-danger" data-toggle="modal"
+										data-target="#WOH-RestaurantList--Delete-Modal" onclick="setId(${model.getId()})"></button>
+								</div>							
+							</td>
+							
+						</tr>					
+	
+					</c:forEach>
+	
+				</c:if>
+	
+			</tbody>
+	
+		</table>
+	</div>
 
 </div>
 

@@ -37,12 +37,13 @@
 	<div class ="container-fluid">
 		<div class="row-fluid">
 			<div class="col-sm-10 col-sm-offset-1">
+			<h1 class="WOH-editRestaurant--Title">Edit Restaurant</h1>
 				<form action = "Edit" method = "POST" class="form-horizontal WOH-editRestaurant-form">
 					<input type="hidden" name="id" value="${restaurant.getId()}">
 					<div class = "col-sm-10">						
 						<!-- Restaurant Name Textbox -->
 							<div class="form-group">
-							<label class="control-label col-sm-2" for="WOH-editRestaurant-restaurantNameInput">Restaurant Name</label>
+							<label class="control-label col-sm-2" for="WOH-editRestaurant-restaurantNameInput">Name</label>
 								<div class="col-sm-10">
 		         					<input type = "text" class="form-control WOH-editRestaurant-restaurantNameInput" name = "name" required value="${restaurant.getName()}">
 		         				</div>
@@ -98,7 +99,7 @@
 	  								<label class = "control-label pull-right" for="WOH-editRestaurant-notesTextArea">Notes</label>
 	  							</div>
 	  							<div class = "col-sm-10">
-	  							<textarea class="WOH-editRestaurant-notesTextArea form-control" rows="5" name="notesInput"><%= '\n' %><c:forEach items="${restaurant.getNotes()}" var="current"><c:out value="${current}" /></c:forEach></textarea>
+	  							<textarea class="WOH-editRestaurant-notesTextArea" rows="5" name="notesInput"><%= '\n' %><c:forEach items="${restaurant.getNotes()}" var="current"><c:out value="${current}" /></c:forEach></textarea>
 	  							</div>
 							</div>				
 					</div>
@@ -107,47 +108,49 @@
 					
 					<!-- Cuisine Type Checkbox -->
 				  		<div class="panel panel-default form-group WOH-editRestaurant-cuisineCheckboxGroup"> 
-				  		
-				  			<!-- Checkbox Search -->
-							<div class="WOH-editRestaurant-cuisineSearchInputGroup input-group ">
-    							<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-    							<input type="text" class="form-control WOH-editRestaurant-cuisineSearch" name="cuisineSearch" placeholder="Search">
+				  			<div class="panel-heading">		
+					  			<!-- Checkbox Search -->
+								<div class="WOH-editRestaurant-cuisineSearchInputGroup inner-addon left-addon">
+	    							<i class="glyphicon glyphicon-search"></i>
+	    							<input type="text" class="form-control WOH-editRestaurant-cuisineSearch" name="cuisineSearch" placeholder="Search">
+	  							</div>
   							</div>
   					
   							<!-- Build comparison string to determine which boxes are checked by default -->
   							<c:forEach items="${restaurant.getCuisines()}" var="currentItem" varStatus="stat">
   								<c:set var="cuisineString" value="${stat.first ? '' : cuisineString} ${currentItem}" />
 							</c:forEach>
-				  			
-				  			<div class="WOH-editRestaurant-cuisineCheckboxPanel">
-								<input type="hidden" name="cuisines" class="WOH-editRestaurant-cuisineInput">
-									
-									<div class="checkbox">
-										<label><input type="checkbox" value="american" class="WOH-editRestaurant-checkbox"<c:if test = "${fn:contains(cuisineString, 'american')}">checked="checked"</c:if> />American</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" value="chinese" class="WOH-editRestaurant-checkbox" <c:if test = "${fn:contains(cuisineString, 'chinese')}">checked="checked"</c:if> />Chinese</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" value="mexican" class="WOH-editRestaurant-checkbox" <c:if test = "${fn:contains(cuisineString, 'mexican')}">checked="checked"</c:if> />Mexican</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" value="indian" class="WOH-editRestaurant-checkbox" <c:if test = "${fn:contains(cuisineString, 'indian')}">checked="checked"</c:if> />Indian</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" value="korean" class="WOH-editRestaurant-checkbox" <c:if test = "${fn:contains(cuisineString, 'korean')}">checked="checked"</c:if> />Korean</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" value="pizza" class="WOH-editRestaurant-checkbox" <c:if test = "${fn:contains(cuisineString, 'pizza')}">checked="checked"</c:if> />Pizza</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" value="italian" class="WOH-editRestaurant-checkbox" <c:if test = "${fn:contains(cuisineString, 'italian')}">checked="checked"</c:if> />Italian</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" value="sandwiches" class="WOH-editRestaurant-checkbox" <c:if test = "${fn:contains(cuisineString, 'sandwiches')}">checked="checked"</c:if> />Sandwiches</label>
-									</div>
-									
+				  			<div class="WOH-editRestaurant-cuisineCheckboxPanelBody panel-body">
+					  			<div class="WOH-editRestaurant-cuisineCheckboxPanel">
+									<input type="hidden" name="cuisines" class="WOH-editRestaurant-cuisineInput">
+										
+										<div class="checkbox">
+											<label><input type="checkbox" value="american" class="WOH-editRestaurant-checkbox"<c:if test = "${fn:contains(cuisineString, 'american')}">checked="checked"</c:if> />American</label>
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" value="chinese" class="WOH-editRestaurant-checkbox" <c:if test = "${fn:contains(cuisineString, 'chinese')}">checked="checked"</c:if> />Chinese</label>
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" value="mexican" class="WOH-editRestaurant-checkbox" <c:if test = "${fn:contains(cuisineString, 'mexican')}">checked="checked"</c:if> />Mexican</label>
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" value="indian" class="WOH-editRestaurant-checkbox" <c:if test = "${fn:contains(cuisineString, 'indian')}">checked="checked"</c:if> />Indian</label>
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" value="korean" class="WOH-editRestaurant-checkbox" <c:if test = "${fn:contains(cuisineString, 'korean')}">checked="checked"</c:if> />Korean</label>
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" value="pizza" class="WOH-editRestaurant-checkbox" <c:if test = "${fn:contains(cuisineString, 'pizza')}">checked="checked"</c:if> />Pizza</label>
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" value="italian" class="WOH-editRestaurant-checkbox" <c:if test = "${fn:contains(cuisineString, 'italian')}">checked="checked"</c:if> />Italian</label>
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" value="sandwiches" class="WOH-editRestaurant-checkbox" <c:if test = "${fn:contains(cuisineString, 'sandwiches')}">checked="checked"</c:if> />Sandwiches</label>
+										</div>
+										
 								</div>
+							</div>
 						</div>
 						
 						<!-- Submit Button -->
