@@ -170,6 +170,7 @@ function spin() {
 
 //This rotates the wheel! woo!
 function rotateWheel() {
+  $(".WOH-Wheel--spinButton").attr("disabled","disabled");
   spinTime += 30;
   if(spinTime >= spinTimeTotal) {
     stopRotateWheel();
@@ -194,6 +195,7 @@ function stopRotateWheel() {
   var text = options[index].name;
   ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
   ctx.restore();
+  $(".WOH-Wheel--spinButton").removeAttr("disabled");
 }
 
 //This little function adds an important styeto our rotation. 

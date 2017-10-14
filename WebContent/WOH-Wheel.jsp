@@ -15,13 +15,13 @@
 	<div class="container WOH-Wheel--WheelContainer">
 		<div class="row">
 			<div class="text-center">
-				<canvas id="canvas" width="550" height="550"></canvas>
+				<canvas id="canvas" width="504" height="550"></canvas>
 				<script src="Wheel/WOH-Wheel.js"></script>
 			</div>
 		</div>
 		<div class="row">
 			<div class="WOH-Wheel--ButtonPanel text-center">
-				<button type="button" value="spin"  onClick="spin()" class="btn btn-default">Spin</button>
+				<button type="button" value="spin"  onClick="spin()" class="WOH-Wheel--spinButton btn btn-default">Spin</button>
 				<button type="button" value="colorToggle" onclick="colorToggle()" class="btn btn-default">Color Toggle</button>
 			</div>
 		</div>
