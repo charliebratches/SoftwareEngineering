@@ -31,6 +31,7 @@
 	<div class ="container-fluid">
 		<div class="row-fluid">
 			<div class="col-sm-10 col-sm-offset-1">
+				<h1 class="WOH-spinSetup--Title">Wheel Setup</h1>
 				<form action = "WheelQuery" method = "POST" class="form-horizontal WOH-spinSetup-form">
 					<div class = "col-sm-10">						
 	         			
@@ -79,14 +80,16 @@
 
 					<!-- Cuisine Type Checkbox -->
 				  		<div class="panel panel-default form-group WOH-spinSetup-cuisineCheckboxGroup"> 
-				  		
-				  			<!-- Checkbox Search -->
-							<div class="WOH-spinSetup-cuisineSearchInputGroup input-group ">
-    							<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-    							<input type="text" class="form-control WOH-spinSetup-cuisineSearch" name="cuisineSearch" placeholder="Search">
+				  			<div class="panel-heading">	
+					  			<!-- Checkbox Search -->
+								<div class="WOH-spinSetup-cuisineSearchInputGroup inner-addon left-addon">
+									<i class="glyphicon glyphicon-search"></i>
+	    							<input type="text" class="form-control WOH-spinSetup-cuisineSearch" name="cuisineSearch" placeholder="Search">
+    							</div>
   							</div>
-				  			<div class="WOH-spinSetup-cuisineCheckboxPanel">
-								<input type="hidden" name="cuisines" class="WOH-spinSetup-cuisineInput">
+  							<div class="WOH-spinSetup-cuisineCheckboxPanelBody panel-body">
+					  			<div class="WOH-spinSetup-cuisineCheckboxPanel">
+									<input type="hidden" name="cuisines" class="WOH-spinSetup-cuisineInput">
 									<div class="checkbox ">
 										<label><input type="checkbox" value="american" class="WOH-spinSetup-checkbox">American</label>
 									</div>
@@ -112,6 +115,7 @@
 										<label><input type="checkbox" value="italian" class="WOH-spinSetup-checkbox">Sandwiches</label>
 									</div>
 								</div>
+							</div>
 						</div>
 						
 						<!-- Submit Button -->

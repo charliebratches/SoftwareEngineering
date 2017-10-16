@@ -3,14 +3,23 @@ var options = [];
 var arc;
 
 $(document).ready(function(){
+	$(".WOH-Wheel--WheelFailedContainer").hide();
 	$.get('GetWheelQuery', function(data){
-		console.log(data);
-		data.forEach( function(item){
-			options.push(item);
-		});		
+		if(data !=null){
+			data.forEach( function(item){
+				options.push(item);
+			});	
+		}
 	}).done(function(){	
-		arc = Math.PI / (options.length / 2);
-		drawRouletteWheel();
+		if(options.length > 0){
+			arc = Math.PI / (options.length / 2);
+			drawRouletteWheel();			
+		}else{
+			console.log("wheel failed");
+			$(".WOH-Wheel--WheelContainer").hide();
+			$(".WOH-Wheel--WheelFailedContainer").show();
+			
+		}
 	}).fail(function(){
 		console.log("Ajax failed");
 	});
@@ -95,7 +104,7 @@ function drawRouletteWheel() {
     //Start off with a blank slate. clearRect basically "deletes" the 500x500 pixel area
     ctx.clearRect(0,0,500,500);
 
-    ctx.strokeStyle = "white";
+    ctx.strokeStyle = "#aaa";
     ctx.lineWidth = 2;
 
     //classic helvetica
@@ -126,10 +135,10 @@ function drawRouletteWheel() {
 
       //the beginPath() function starts drawing along the arc 
       ctx.beginPath();
-      ctx.arc(250, 250, outsideRadius, angle, angle + arc, false);
+      ctx.arc(252, 252, outsideRadius, angle, angle + arc, false);
       ctx.arc(250, 250, insideRadius, angle + arc, angle, true);
-      ctx.stroke();
       ctx.fill();
+      
 
       //for some reason, the ctx object has to be saved for this to work properly
       ctx.save();
@@ -149,17 +158,13 @@ function drawRouletteWheel() {
 
     //Draw the arrow by painstakingly placing the coordinates of eachline
 
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "#333";
     ctx.beginPath();
-    ctx.moveTo(250 - 4, 250 - (outsideRadius + 5));
-    ctx.lineTo(250 + 4, 250 - (outsideRadius + 5));
-    ctx.lineTo(250 + 4, 250 - (outsideRadius - 5));
-    ctx.lineTo(250 + 9, 250 - (outsideRadius - 5));
-    ctx.lineTo(250 + 0, 250 - (outsideRadius - 13));
-    ctx.lineTo(250 - 9, 250 - (outsideRadius - 5));
-    ctx.lineTo(250 - 4, 250 - (outsideRadius - 5));
-    ctx.lineTo(250 - 4, 250 - (outsideRadius + 5));
-    ctx.fill();
+    ctx.lineTo(250 + 11, 250 - (outsideRadius + 3));
+    ctx.lineTo(250 + 0, 250 - (outsideRadius - 33));
+    ctx.lineTo(250 - 11, 250 - (outsideRadius + 3));
+    ctx.fill();    
+    
   }
 }
 
@@ -174,6 +179,7 @@ function spin() {
 
 //This rotates the wheel! woo!
 function rotateWheel() {
+  $(".WOH-Wheel--spinButton").attr("disabled","disabled");
   spinTime += 30;
   if(spinTime >= spinTimeTotal) {
     stopRotateWheel();
@@ -193,10 +199,12 @@ function stopRotateWheel() {
   var arcd = arc * 180 / Math.PI;
   var index = Math.floor((360 - degrees % 360) / arcd);
   ctx.save();
-  ctx.font = 'bold 30px Helvetica, Arial';
+  ctx.fillStyle = "#000";
+  ctx.font = 'bold 28px Helvetica, Arial';
   var text = options[index].name;
   ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
   ctx.restore();
+  $(".WOH-Wheel--spinButton").removeAttr("disabled");
 }
 
 //This little function adds an important styeto our rotation. 
