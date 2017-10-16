@@ -3,14 +3,23 @@ var options = [];
 var arc;
 
 $(document).ready(function(){
+	$(".WOH-Wheel--WheelFailedContainer").hide();
 	$.get('GetWheelQuery', function(data){
-		console.log(data);
-		data.forEach( function(item){
-			options.push(item);
-		});		
+		if(data !=null){
+			data.forEach( function(item){
+				options.push(item);
+			});	
+		}
 	}).done(function(){	
-		arc = Math.PI / (options.length / 2);
-		drawRouletteWheel();
+		if(options.length > 0){
+			arc = Math.PI / (options.length / 2);
+			drawRouletteWheel();			
+		}else{
+			console.log("wheel failed");
+			$(".WOH-Wheel--WheelContainer").hide();
+			$(".WOH-Wheel--WheelFailedContainer").show();
+			
+		}
 	}).fail(function(){
 		console.log("Ajax failed");
 	});

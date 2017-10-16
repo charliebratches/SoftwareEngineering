@@ -26,5 +26,19 @@
 			</div>
 		</div>
 	 </div>
+	 
+	 <div class="WOH-Wheel--WheelFailedContainer">
+	 	<div class="panel panel-default">
+	 		<div class="panel-heading">
+	 			<h4 class="text-center">Wheel Generation Failed</h4>	 		
+	 		</div>
+	 		<div class="panel-body">	 			
+			 	<p>No restaurants matched your selected options. Go back to the setup page and change your options.</p> 	 		
+	 			<div class="pull-right">
+	 				<a class="btn btn-default" href="WOH-spinSetup.jsp">Back</a>	 				
+	 			</div>
+	 		</div>	 		
+	 	</div>
+	 </div>
 </body>
 </html>

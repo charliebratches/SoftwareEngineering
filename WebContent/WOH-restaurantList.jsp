@@ -89,9 +89,9 @@
 	
 							<td class ="col-sm-2">${model.getName()}</td>
 	
-							<td class ="col-sm-2">${model.getType()}</td>
+							<td class ="col-sm-2">${model.convertToType(model.getType())}</td>
 	
-							<td class ="col-sm-2">${model.getPrice()}</td>
+							<td class ="col-sm-2">${model.convertToPrice(model.getPrice())}</td>
 							
 							<td class ="col-sm-1"></td>
 							<td class ="col-sm-3">

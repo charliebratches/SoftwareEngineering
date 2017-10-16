@@ -7,3 +7,9 @@
 .WOH-Wheel--ButtonPanel{
 	margin-top:0.5em;
 }
+
+.WOH-Wheel--WheelFailedContainer{
+	margin:0 auto;
+	margin-top:10em;
+	width: 50%;
+}
