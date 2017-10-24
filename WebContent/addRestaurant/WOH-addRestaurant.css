@@ -1,4 +1,22 @@
+/* enable absolute positioning */
+.inner-addon { 
+    position: relative; 
+}
 
+/* style icon */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
 
 .WOH-addRestaurant--Title{
 	margin-bottom:1em;
@@ -8,12 +26,10 @@
 {	
 	height: 24em;
 	width: auto;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
 }
 .WOH-addRestaurant-cuisineCheckboxPanel{
-	overflow-y:scroll;
-	height: 21.5em;
+	overflow-y:auto;
+	height: 100%;
 }
 
 .WOH-addRestaurant-distanceLabel
@@ -28,9 +44,18 @@
 
 .WOH-addRestaurants-notesTextArea
 {
-	height: 10.5em !important;
+	height: 10.5em;
+	width:100%;
 	resize: none;
-	overflow-y: scroll;
+	overflow-y: auto;
+	padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    z-index:1;
 }
 
 .WOH-addRestaurants-submitButton
@@ -42,6 +67,11 @@
 {
 	margin-right: -7px;
 	margin-left: -7px;
+}
+
+.WOH-addRestaurant-cuisineCheckboxPanelBody{
+	padding:0;
+	padding-left:0.5em;
 }
 
 /* https://github.com/seiyria/bootstrap-slider */

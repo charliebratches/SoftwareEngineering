@@ -18,21 +18,22 @@
 .left-addon input  { padding-left:  30px; }
 .right-addon input { padding-right: 30px; }
 
-.WOH-spinSetup--Title{
+.WOH-editRestaurant--Title{
 	margin-bottom:1em;
 }
 
-.WOH-spinSetup-cuisineCheckboxGroup
+.WOH-editRestaurant-cuisineCheckboxGroup
 {	
 	height: 24em;
 	width: auto;
 }
-.WOH-spinSetup-cuisineCheckboxPanel{
+
+.WOH-editRestaurant-cuisineCheckboxPanel{
 	overflow-y:auto;
 	height: 100%;
 }
 
-.WOH-spinSetup-distanceLabel
+.WOH-editRestaurant-distanceLabel
 {
 	vertical-align: middle;
 }
@@ -42,18 +43,34 @@
 	background: #BABABA;
 }
 
-.WOH-spinSetup-submitButton
+.WOH-editRestaurant-notesTextArea
+{
+	height: 10.5em;
+	width:100%;
+	resize: none;
+	overflow-y: auto;
+	padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    z-index:1;
+}
+
+.WOH-editRestaurant-submitButton
 {
 	margin-right: -15px;
 }
 
-.WOH-spinSetup-cuisineSearchInputGroup
+.WOH-editRestaurant-cuisineSearchInputGroup
 {
 	margin-right: -7px;
 	margin-left: -7px;
 }
 
-.WOH-spinSetup-cuisineCheckboxPanelBody{
+.WOH-editRestaurant-cuisineCheckboxPanelBody{
 	padding:0;
 	padding-left:0.5em;
 }
@@ -306,4 +323,3 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff89cdef', endColorstr='#ff81bfde', GradientType=0);
   opacity: 1;
 }
-

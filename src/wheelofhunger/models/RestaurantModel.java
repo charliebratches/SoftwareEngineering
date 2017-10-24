@@ -30,12 +30,64 @@ public class RestaurantModel {
 		this.price = price;
 	}
 	
+	public String convertToPrice(int price){
+		String priceString="";
+		
+		switch(price){
+			case 1:
+				priceString ="$";
+				break;
+			case 2:
+				priceString ="$$";
+				break;
+			case 3:
+				priceString = "$$$";
+				break;
+			case 4:
+				priceString = "$$$$";
+				break;
+			case 5:
+				priceString = "$$$$$";
+				break;
+			default:
+				priceString = Integer.toString(price);
+				break;
+		}		
+		return priceString;
+	}
+	
 	public int getType(){
 		return this.type;
 	}
 	
 	public void setType(int type){
 		this.type = type;
+	}
+	
+	public String convertToType(int type){
+		String typeString="";
+		
+		switch(type){
+			case 1:
+				typeString ="Fast Food";
+				break;
+			case 2:
+				typeString ="Sit-Down";
+				break;
+			case 3:
+				typeString = "Dessert";
+				break;
+			case 4:
+				typeString = "Bakery";
+				break;
+			case 5:
+				typeString = "Cafe";
+				break;
+			default:
+				typeString = Integer.toString(type);
+				break;
+		}		
+		return typeString;
 	}
 	
 	public List<String> getCuisines(){
@@ -69,4 +121,6 @@ public class RestaurantModel {
 	public void setDistance(int distance){
 		this.distance = distance;
 	}
+	
+	
 }

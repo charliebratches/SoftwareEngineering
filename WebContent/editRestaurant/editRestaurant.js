@@ -2,10 +2,35 @@ var cuisines ="";
 var notes = "";
 var slider = "";
 var distanceValue = "";
+var priceSelect = ""
+var foodTypeSelect = "";
+var selectedFoodType = "";
+var priceSelect = "";
+var selectedDistance = "";
 
 $(document).ready(function()
 {
-	//On Slider Movement
+	//Price Dropdown Default Value Setup
+	var selectedPrice = $(".WOH-editRestaurant-startingPriceHiddenInput").val();
+	var priceSelect = document.getElementById('priceSelect');
+	for(var i, j = 0; i = priceSelect.options[j]; j++) {
+	  if(i.value == selectedPrice) {
+		  priceSelect.selectedIndex = j;
+	    break;
+	  }
+	}
+
+	//Food Type Dropdown Default Value Setup
+	var selectedFoodType = $(".WOH-editRestaurant-startingFoodTypeHiddenInput").val();
+	foodTypeSelect = document.getElementById('foodTypeSelect');
+	for(var i, j = 0; i = foodTypeSelect.options[j]; j++) {
+	  if(i.value == selectedFoodType) {
+		  foodTypeSelect.selectedIndex = j;
+	    break;
+	  }
+	}
+	
+	//Create Slider and change value based on Slider Movement
 	var slider = new Slider('#distanceSlider', {
 		formatter: function(value) {
 			distanceValue = value;
@@ -18,19 +43,19 @@ $(document).ready(function()
 
 formatData=function()
 {
-	$(".WOH-addRestaurant-checkbox").each(function(){
+	$(".WOH-editRestaurant-checkbox").each(function(){
 		if(this.checked){
 			cuisines+= $(this).val()+",";
 		}
 	});
-	$(".WOH-addRestaurant-cuisineInput").val(cuisines);
+	$(".WOH-editRestaurant-cuisineInput").val(cuisines);
 	
-	notes = $(".WOH-addRestaurants-notesTextArea").val();
-	$(".WOH-addRestaurant-notesInput").val(notes);
-	
-	$(".WOH-addRestaurant-distanceHiddenInput").val(distanceValue);
-	
-	$(".WOH-addRestaurant-form").submit();
+	notes = $(".WOH-editRestaurant-notesTextArea").val();
+	$(".WOH-editRestaurant-notesInput").val(notes);
+
+	$(".WOH-editRestaurant-distanceHiddenInput").val(distanceValue);
+
+	$(".WOH-editRestaurant-form").submit();
 }
 
 /*! =========================================================
@@ -1978,4 +2003,3 @@ const windowIsDefined = (typeof window === "object");
 
 	return Slider;
 }));
-

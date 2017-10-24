@@ -1,5 +1,4 @@
 var cuisines ="";
-var notes = "";
 var slider = "";
 var distanceValue = "";
 
@@ -12,25 +11,22 @@ $(document).ready(function()
 			return value + ' miles';
 		}
 	});
-
 });
 
 
 formatData=function()
 {
-	$(".WOH-addRestaurant-checkbox").each(function(){
+	$(".WOH-spinSetup-checkbox").each(function(){
 		if(this.checked){
 			cuisines+= $(this).val()+",";
 		}
 	});
-	$(".WOH-addRestaurant-cuisineInput").val(cuisines);
+	$(".WOH-spinSetup-cuisineInput").val(cuisines);
 	
-	notes = $(".WOH-addRestaurants-notesTextArea").val();
-	$(".WOH-addRestaurant-notesInput").val(notes);
-	
-	$(".WOH-addRestaurant-distanceHiddenInput").val(distanceValue);
-	
-	$(".WOH-addRestaurant-form").submit();
+	//distanceValue = distanceValue / .00062137;
+	$(".WOH-spinSetup-distanceHiddenInput").val(distanceValue);
+	console.log(distanceValue);
+	$(".WOH-spinSetup-form").submit();
 }
 
 /*! =========================================================
@@ -1978,4 +1974,3 @@ const windowIsDefined = (typeof window === "object");
 
 	return Slider;
 }));
-

@@ -98,7 +98,7 @@
 	  							<label class = "control-label pull-right" for="WOH-addRestaurants-notesTextArea">Notes</label>
 	  							</div>
 	  							<div class = "col-sm-10">
-	  							<textarea class="WOH-addRestaurants-notesTextArea form-control" rows="5" name="notesInput"></textarea>
+	  							<textarea class="WOH-addRestaurants-notesTextArea" rows="5" name="notesInput"></textarea>
 	  							</div>
 							</div>				
 					</div>
@@ -109,35 +109,39 @@
 				  		<div class="panel panel-default form-group WOH-addRestaurant-cuisineCheckboxGroup"> 
 				  		
 				  			<!-- Checkbox Search -->
-							<div class="WOH-addRestaurants-cuisineSearchInputGroup input-group ">
-    							<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-    							<input type="text" class="form-control WOH-addRestaurants-cuisineSearch" name="cuisineSearch" placeholder="Search">
+				  			<div class="panel-heading">
+								<div class="WOH-addRestaurants-cuisineSearchInputGroup inner-addon left-addon">
+	    							<i class="glyphicon glyphicon-search"></i>
+	    							<input type="text" class="form-control WOH-addRestaurants-cuisineSearch" name="cuisineSearch" placeholder="Search">
+	  							</div> 
   							</div>
-				  			<div class="WOH-addRestaurant-cuisineCheckboxPanel">
-								<input type="hidden" name="cuisines" class="WOH-addRestaurant-cuisineInput">
-									<div class="checkbox ">
-										<label><input type="checkbox" value="american" class="WOH-addRestaurant-checkbox">American</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" value="chinese" class="WOH-addRestaurant-checkbox">Chinese</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" value="mexican" class="WOH-addRestaurant-checkbox">Mexican</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" value="indian" class="WOH-addRestaurant-checkbox">Indian</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" value="korean" class="WOH-addRestaurant-checkbox">Korean</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" value="pizza" class="WOH-addRestaurant-checkbox">Pizza</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" value="italian" class="WOH-addRestaurant-checkbox">Italian</label>
-									</div>
-									<div class="checkbox">
-										<label><input type="checkbox" value="italian" class="WOH-addRestaurant-checkbox">Sandwiches</label>
+  							<div class="WOH-addRestaurant-cuisineCheckboxPanelBody panel-body">
+					  			<div class="WOH-addRestaurant-cuisineCheckboxPanel">
+									<input type="hidden" name="cuisines" class="WOH-addRestaurant-cuisineInput">
+										<div class="checkbox ">
+											<label><input type="checkbox" value="american" class="WOH-addRestaurant-checkbox">American</label>
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" value="chinese" class="WOH-addRestaurant-checkbox">Chinese</label>
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" value="mexican" class="WOH-addRestaurant-checkbox">Mexican</label>
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" value="indian" class="WOH-addRestaurant-checkbox">Indian</label>
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" value="korean" class="WOH-addRestaurant-checkbox">Korean</label>
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" value="pizza" class="WOH-addRestaurant-checkbox">Pizza</label>
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" value="italian" class="WOH-addRestaurant-checkbox">Italian</label>
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" value="italian" class="WOH-addRestaurant-checkbox">Sandwiches</label>
+										</div>
 									</div>
 								</div>
 						</div>
