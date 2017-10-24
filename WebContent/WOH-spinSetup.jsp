@@ -26,10 +26,7 @@
 </head>
 
 <body>
-<<<<<<< HEAD
 <%@include file="banner/WOH-banner.jsp" %>
-=======
-<%@include file="banner/WOH-banner.html" %>
 	
 	<div class ="container-fluid">
 		<div class="row-fluid">
@@ -80,7 +77,6 @@
 					</div>
 					
 					<div class = "col-sm-2">
->>>>>>> master
 
 					<!-- Cuisine Type Checkbox -->
 				  		<div class="panel panel-default form-group WOH-spinSetup-cuisineCheckboxGroup"> 
