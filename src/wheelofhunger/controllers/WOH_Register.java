@@ -94,18 +94,16 @@ public class WOH_Register extends HttpServlet {
 	      }
 	      try 
 	      {
-	    	  	String selectSQL = "SELECT * FROM restaurants "+ "WHERE username = "+username+";";
-		        PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
-		        ResultSet rs = preparedStatement.executeQuery();
+    	  	/*String selectSQL = "SELECT * FROM restaurants "+ "WHERE username = "+username+";";
+	        PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+	        ResultSet rs = preparedStatement.executeQuery();*/
+	
+	        	String insertSQL = "INSERT INTO restaurants(username, password, secQuestion1, secQuestion2, secQuestion3, secQuestionAnswer1, secQuestionAnswer2, secQuestionAnswer3)"
+		         		+ "VALUES ('" + username + "', " + password + ", " + secQuestion1 + ", " + secQuestion2 + ", '" + secQuestion3  + ", '" + secQuestionAnswer1 + ", '" + secQuestionAnswer2  +"', '" + secQuestionAnswer3 +"');";
+	        	PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
+		        int i = preparedStatement.executeUpdate();
 		        
-		        if (rs == null)
-		        {	
-		        	String insertSQL = "INSERT INTO restaurants(username, password, secQuestion1, secQuestion2, secQuestion3, secQuestionAnswer1, secQuestionAnswer2, secQuestionAnswer3)"
-			         		+ "VALUES ('" + username + "', " + password + ", " + secQuestion1 + ", " + secQuestion2 + ", '" + secQuestion3  + ", '" + secQuestionAnswer1 + ", '" + secQuestionAnswer2  +"', '" + secQuestionAnswer3 +"');";
-			         preparedStatement = connection.prepareStatement(insertSQL);
-			         preparedStatement.executeUpdate();
-		        }
-		        else
+		        if(i == 0)
 		        {
 		        	errorMessage = 1;
 		        	request.setAttribute("errorMessage", errorMessage);
