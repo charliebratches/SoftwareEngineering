@@ -6,11 +6,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class WOH_Logout
  */
-@WebServlet("/WOH_Logout")
+@WebServlet("/Logout")
 public class WOH_Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,7 +36,11 @@ public class WOH_Logout extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		HttpSession session = request.getSession(true);
+		session.setAttribute("userid", null);
+		session.invalidate();
+		response.sendRedirect("WOH-index.jsp");
 	}
 
 }

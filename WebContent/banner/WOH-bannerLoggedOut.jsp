@@ -4,15 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
     
-<%
-    if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "")) 
-    {
-    	response.sendRedirect("WOH-login.jsp");
-    }
-    else
-    {
-    }
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,14 +20,10 @@
 	
 	<link rel="stylesheet" type="text/css" href="site/WOH-site.css">
 	
-	<script src="banner/banner.js"></script>	
-	
 	<title>Wheel of Hunger</title>
 </head>
 
 <body>
-	
-
 	<nav class="navbar navbar-default">
   	<div class="container-fluid">
     	<div class="navbar-header">
@@ -44,15 +31,14 @@
     	</div>
     	<ul class="nav navbar-nav">
       	<li><a href="WOH-index.jsp">Home</a></li>
-      	<li><a href="WOH-addRestaurant.jsp">Add</a></li>
-      	<li><a href="DisplayAll">Restaurants</a></li>
-      	<li><a href="WOH-spinSetup.jsp">Setup Spin</a></li>
     	</ul>
-    	<form action = "Logout" method = "POST" class="WOH-logout-form">
     	<ul class="nav navbar-nav navbar-right">
-      	<li><a href="#" onclick="logoutFormSubmit();return false;" ><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+      	<li><a href="WOH-register.jsp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      	<li><a href="WOH-login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     	</ul>
-    	</form>
+    	
+    	
+
   	</div>
 	</nav>
 </body>

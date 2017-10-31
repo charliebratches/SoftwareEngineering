@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -52,17 +53,19 @@ public class WOH_Insert extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=UTF-8");
+		HttpSession session = request.getSession(true);
 		String name = request.getParameter("name");
 	    int price = -1;
 	    int type = -1;
 	    int distance = -1;
+	    int userId = -1;
 	    
     	try
     	{
     		price = Integer.parseInt(request.getParameter("price"));
     		type = Integer.parseInt(request.getParameter("type"));
     		distance = Integer.parseInt(request.getParameter("distance"));
-    		
+    		userId = Integer.parseInt(session.getAttribute("userid").toString());
     	}
     	catch(Exception e){
     		System.out.println("fields are null");
@@ -87,8 +90,8 @@ public class WOH_Insert extends HttpServlet {
 	         System.out.println("Failed to make connection!");
 	      }
 	      try {
-	         String insertSQL = "INSERT INTO restaurants(NAME, PRICE, DISTANCE, TYPE, CUISINES, NOTES)"
-	         		+ "VALUES ('" + name + "', " + price + ", " + distance + ", " + type + ", '" + cuisines +"', '" + notes +"');";
+	         String insertSQL = "INSERT INTO restaurants(NAME, PRICE, DISTANCE, TYPE, CUISINES, NOTES, USERID)"
+	         		+ "VALUES ('" + name + "', " + price + ", " + distance + ", " + type + ", '" + cuisines +"', '" + notes +"'" + userId+");";
 	         PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
 	         preparedStatement.executeUpdate();
 	        	         

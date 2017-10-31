@@ -18,7 +18,6 @@
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-	
 	<link rel="stylesheet" type="text/css" href="forgotPassword/WOH-forgotPassword.css">
 	<link rel="stylesheet" type="text/css" href="site/WOH-site.css">
 
@@ -29,24 +28,26 @@
 <%@include file="banner/WOH-bannerLoggedOut.jsp" %>
 	
 	<div class ="container-fluid">
+	
+	<input type="hidden" name="error" class="WOH-forgotPasswordUsername-errorHiddenInput" value="${errorMessage}">
 		
 		<div class="row-fluid">
 			<div class="col-sm-10 col-sm-offset-2">
-			<h1 class="WOH-forgotPassword--Title">Forgot Password</h1>
-				<form action = "forgotPassword" method = "POST" class="form-horizontal WOH-forgotPassword-form">
+			<h1 class="WOH-forgotPasswordUsername--Title">Forgot Password</h1>
+				<form action = "ForgotPasswordGetQuestions" method = "POST" class="form-horizontal WOH-forgotPasswordUsername-form">
 					<div class = "col-sm-8">
-		         			
-		         			<!-- Password Textbox -->
+											
+						<!-- User Name Textbox -->
 							<div class="form-group">
-							<label class="control-label col-sm-3" for="WOH-forgotPassword-passwordInput">New Password</label>
+							<label class="control-label col-sm-3" for="WOH-forgotPasswordUsername-usernameInput">Username</label>
 								<div class="col-sm-9">
-		         					<input type = "password" class="form-control WOH-forgotPassword-passwordInput" name = "password">
+		         					<input type = "text" class="form-control WOH-forgotPasswordUsername-UsernameInput" name = "username">
 		         				</div>
 		         			</div>
 	         			
 						<!-- Submit Button -->
 							
-		  					<button type="button" class="btn btn-default pull-right WOH-forgotPassword-submitButton" onclick="formatData()">Submit</button>
+		  					<button type="button" class="btn btn-default pull-right WOH-forgotPasswordUsername-submitButton" onclick="formatData()">Submit</button>
 					</div>
 					
 				</form>

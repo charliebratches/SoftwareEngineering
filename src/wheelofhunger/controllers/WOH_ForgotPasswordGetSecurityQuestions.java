@@ -1,6 +1,13 @@
 package wheelofhunger.controllers;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,21 +16,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import wheelofhunger.models.UserModel;
 
 /**
- * Servlet implementation class WOH_Register
+ * Servlet implementation class WOH_ForgotPassword
  */
-@WebServlet("/Register")
-public class WOH_Register extends HttpServlet {
+@WebServlet("/ForgotPasswordGetQuestions")
+public class WOH_ForgotPasswordGetSecurityQuestions extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static String             url              = "jdbc:mysql://wheelofhunger.ddns.net:3306/WOHDB";
 	static String             user             = "remote";
@@ -33,7 +32,7 @@ public class WOH_Register extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public WOH_Register() {
+    public WOH_ForgotPasswordGetSecurityQuestions() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -54,34 +53,14 @@ public class WOH_Register extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		RequestDispatcher rd;
 		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		String secQuestionAnswer1 ="";
-		String secQuestionAnswer2 = "";
-		String secQuestionAnswer3 = "";
-		
-	    int secQuestion1 = -1;
-	    int secQuestion2 = -1;
-	    int secQuestion3 = -1;
-	    
-	    int errorMessage = 0;
-	    
-    	try
-    	{
-    		secQuestion1 = Integer.parseInt(request.getParameter("secQuestion1"));
-    		secQuestion2 = Integer.parseInt(request.getParameter("secQuestion2"));
-    		secQuestion3 = Integer.parseInt(request.getParameter("secQuestion3"));
-    		
-    	}
-    	catch(Exception e){
-    		System.out.println("fields are null");
-    	}
-	    
-    	try {
+		int errorMessage = 0;
+	     
+	      try {
 	    	  Class.forName("com.mysql.jdbc.Driver");
 	      } catch (ClassNotFoundException e) {
 	    	  e.printStackTrace();
 	      }
- 		connection = null;
+  		connection = null;
 	      try {
 	         connection = DriverManager.getConnection(url, user, password);
 	      } catch (SQLException e) {
@@ -92,27 +71,38 @@ public class WOH_Register extends HttpServlet {
 	      } else {
 	         System.out.println("Failed to make connection!");
 	      }
-	      try 
-	      {	
-	        	String insertSQL = "INSERT INTO users(USERNAME, PASSWORD, SECQUESTION1, SECQUESTION2, SECQUESTION3, SECANSWER1, SECANSWER2, SECANSWER3)"
-		         		+ "VALUES ('" + username + "', '" + password + "', " + secQuestion1 + ", " + secQuestion2 + ", " + secQuestion3  + ", '" + secQuestionAnswer1 + "', '" + secQuestionAnswer2  +"', '" + secQuestionAnswer3 +"');";
-	        	PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
-		        int i = preparedStatement.executeUpdate();
-		        
-		        if(i == 0)
-		        {
-		        	errorMessage = 1;
-		        	request.setAttribute("errorMessage", errorMessage);
-		        	rd = request.getRequestDispatcher("WOH-register.jsp");
-		        	rd.forward(request, response);
-		        }
-	        	         
+	      try {
+	         String selectSQL = "SELECT * FROM users "
+	         		+ "WHERE username = '"+username+"';";
+	         PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+	         ResultSet rs = preparedStatement.executeQuery();	        	 
+	         UserModel user = new UserModel();
+	         if (rs.next()) 
+	         {	
+		    	 user.setUserId(rs.getInt("USERID"));
+		    	 user.setSecQuestion1(rs.getInt("SECQUESTION1"));
+		    	 user.setSecQuestion2(rs.getInt("SECQUESTION2"));
+		    	 user.setSecQuestion3(rs.getInt("SECQUESTION3"));
+		    	 request.setAttribute("errorMessage", errorMessage);
+		    	 request.setAttribute("user", user);
+		    	 rd = request.getRequestDispatcher("/WOH-forgotPasswordQuestions.jsp");
+		         rd.forward(request, response);
+	         }
+	         else
+	         {
+	        	 errorMessage = 3;
+	        	 request.setAttribute("errorMessage", errorMessage);
+	        	 rd = request.getRequestDispatcher("/WOH-forgotPasswordUsername.jsp");
+		         rd.forward(request, response);
+	         }
+	         
+	         
+	         
+	        
+	         
 	      } catch (SQLException e) {
 	         e.printStackTrace();
-	      } 	      
-	     
-	      rd = request.getRequestDispatcher("WOH-login.jsp");
-	      rd.forward(request, response);
+	      } 
 	}
 
 }

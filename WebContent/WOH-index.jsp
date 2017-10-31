@@ -19,8 +19,16 @@
 </head>
 
 <body>
-	<%@include file="banner/WOH-banner.jsp" %>
-	
+<% 
+	if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "")) 
+    { %>
+		<%@include file="banner/WOH-bannerLoggedOut.jsp"%>
+    <% }
+	else
+	{ %>
+		<%@include file="banner/WOH-banner.jsp" %>
+	<% }
+%>
 	
 
 </body>

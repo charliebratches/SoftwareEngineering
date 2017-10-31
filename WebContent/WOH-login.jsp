@@ -21,20 +21,25 @@
 	
 	<link rel="stylesheet" type="text/css" href="login/WOH-login.css">
 	<link rel="stylesheet" type="text/css" href="site/WOH-site.css">
+	
+	<script src="login/login.js"></script>
 
 	<title>Log In</title>
 </head>
 
 <body>
-<%@include file="banner/WOH-banner.jsp" %>
+	
+	<%@include file="banner/WOH-bannerLoggedOut.jsp" %>
 	
 	<div class ="container-fluid">
 		
 		<div class="row-fluid">
-			<div class="col-sm-10 col-sm-offset-3">
+			<div class="col-sm-9 col-sm-offset-3">
 			<h1 class="WOH-login--Title">Log In</h1>
 				<form action = "Login" method = "POST" class="form-horizontal WOH-login-form">
 					<div class = "col-sm-6">
+					
+					<input type="hidden" name="error" class="WOH-login-errorHiddenInput" value="${errorMessage}">
 											
 						<!-- User Name Textbox -->
 							<div class="form-group">
@@ -48,14 +53,14 @@
 							<div class="form-group">
 							<label class="control-label col-sm-2" for="WOH-login-restaurantNameInput">Password</label>
 								<div class="col-sm-10">
-		         					<input type = "text" class="form-control WOH-login-restaurantNameInput" name = "password">
+		         					<input type = "password" class="form-control WOH-login-restaurantNameInput" name = "password">
 		         				</div>
 		         			</div>
 	         			
 						<!-- Submit Button -->
 							
 		  					<button type="button" class="btn btn-default pull-right WOH-login-submitButton" onclick="formatData()">Submit</button>
-		  					<a type="button" class="btn btn-default pull-right WOH-login-forgotButton" href="/ForgotPassowrd">Forgot Password</a>
+		  					<a type="button" class="btn btn-default pull-right WOH-login-forgotButton" href="WOH-forgotPasswordUsername.jsp">Forgot Password</a>
 					</div>
 					
 				</form>
