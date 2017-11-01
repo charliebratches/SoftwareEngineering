@@ -36,6 +36,7 @@ public class WOH_DisplayAll extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	      response.setContentType("text/html;charset=UTF-8");
 	      List<RestaurantModel> restaurantList = new ArrayList<>();
+	      HttpSession session = request.getSession(true);
 	     
 	      try {
 	    	  Class.forName("com.mysql.jdbc.Driver");
@@ -55,8 +56,9 @@ public class WOH_DisplayAll extends HttpServlet{
 	         System.out.println("Failed to make connection!");
 	      }
 	      try {
-	         String selectSQL = "SELECT * FROM restaurants "
-	         		+ "ORDER BY NAME;";
+	    	 int userId = Integer.parseInt(session.getAttribute("userid").toString());
+	         String selectSQL = "SELECT * FROM restaurants2 WHERE USERID = " +userId
+	         		+ " ORDER BY NAME;";
 	         PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
 	         ResultSet rs = preparedStatement.executeQuery();
 	         while (rs.next()) {

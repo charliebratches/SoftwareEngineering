@@ -31,3 +31,8 @@ $(document).ready(function()
 	}
 
 });
+
+formatData=function()
+{
+	$(".WOH-forgotPasswordUsername-form").submit();
+}

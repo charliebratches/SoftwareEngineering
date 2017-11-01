@@ -61,7 +61,7 @@ public class WOH_GetById extends HttpServlet {
 	         System.out.println("Failed to make connection!");
 	      }
 	      try {
-	         String selectSQL = "SELECT * FROM restaurants "
+	         String selectSQL = "SELECT * FROM restaurants2 "
 	         		+ "WHERE id = "+id+";";
 	         PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
 	         ResultSet rs = preparedStatement.executeQuery();	        	 

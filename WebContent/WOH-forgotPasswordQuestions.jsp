@@ -22,7 +22,7 @@
 	<link rel="stylesheet" type="text/css" href="forgotPassword/WOH-forgotPassword.css">
 	<link rel="stylesheet" type="text/css" href="site/WOH-site.css">
 	
-	<script src="editRestaurant/editRestaurant.js"></script>
+	<script src="forgotPassword/forgotPasswordQuestions.js"></script>
 
 	<title>Forgot Password</title>
 </head>
@@ -61,7 +61,7 @@
 							
 							<label class="control-label col-sm-3" for="WOH-forgotPasswordQuestions-secQuestion1Input">Answer</label>
 								<div class="col-sm-9">
-		         					<input type = "text" class="form-control WOH-forgotPasswordQuestions-secQuestion1Input" name = "secQuestion1Answer">
+		         					<input type = "text" class="form-control WOH-forgotPasswordQuestions-secQuestion1Input"  name = "secQuestion1Answer">
 		         				</div>
 		         			</div>
 		         			
@@ -72,7 +72,7 @@
 				  						<label class="pull-right control-label" for="WOH-forgotPasswordQuestions-secQuestion2Dropdown">Question 2</label>
 				  					</div>
 				  					<div class="col-sm-9">
-				  						<select disabled class="form-control WOH-forgotPasswordQuestions-secQuestion2Dropdown" name="secQuestion2">
+				  						<select disabled class="form-control WOH-forgotPasswordQuestions-secQuestion2Dropdown" id ="secQuestion2" name="secQuestion2">
 				    						<option selected="selected" value = "0" >-- Select a Question --</option>
 				    						<option value = "1" >What is your mother's maiden name?</option>
 				    						<option value = "2" >What is the name of your favorite pet?</option>
@@ -97,7 +97,7 @@
 				  						<label class="pull-right control-label" for="WOH-forgotPasswordQuestions-secQuestion3Dropdown">Question 3</label>
 				  					</div>
 				  					<div class="col-sm-9">
-				  						<select disabled class="form-control WOH-forgotPasswordQuestions-secQuestion3Dropdown" name="secQuestion3">
+				  						<select disabled class="form-control WOH-forgotPasswordQuestions-secQuestion3Dropdown" id ="secQuestion3" name="secQuestion3">
 				    						<option selected="selected" value = "0" >-- Select a Question --</option>
 				    						<option value = "1" >What is your mother's maiden name?</option>
 				    						<option value = "2" >What is the name of your favorite pet?</option>

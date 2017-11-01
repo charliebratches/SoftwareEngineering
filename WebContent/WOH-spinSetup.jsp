@@ -74,6 +74,20 @@
 			  						</select>
 			  					</div>
 		  					</div>
+		  					
+		  					<!-- Database Select Dropdown -->
+						<div class="form-group">
+								<div class="col-sm-2">
+			  						<label class="pull-right control-label" for="WOH-spinSetup-databaseInput">Database</label>
+			  					</div>
+			  					<div class="col-sm-10">
+			  						<select class="form-control WOH-spinSetup-databaseInput" name="database">
+			    						<option selected="selected" value = "1" >Your Restaurants</option>
+			    						<option value = "2" >All Restaurants</option>
+			    						<option value = "3" >Google API</option>
+			  						</select>
+			  					</div>
+		  				</div>
 					</div>
 					
 					<div class = "col-sm-2">

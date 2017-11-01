@@ -64,7 +64,7 @@ public class WOH_Delete extends HttpServlet {
 	         System.out.println("Failed to make connection!");
 	      }
 	      try {
-	         String selectSQL = "DELETE FROM restaurants "
+	         String selectSQL = "DELETE FROM restaurants2 "
 	         		+ "WHERE id = "+id+";";
 	         PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
 	         preparedStatement.executeUpdate();

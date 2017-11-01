@@ -90,8 +90,8 @@ public class WOH_Insert extends HttpServlet {
 	         System.out.println("Failed to make connection!");
 	      }
 	      try {
-	         String insertSQL = "INSERT INTO restaurants(NAME, PRICE, DISTANCE, TYPE, CUISINES, NOTES, USERID)"
-	         		+ "VALUES ('" + name + "', " + price + ", " + distance + ", " + type + ", '" + cuisines +"', '" + notes +"'" + userId+");";
+	         String insertSQL = "INSERT INTO restaurants2(NAME, PRICE, DISTANCE, TYPE, CUISINES, NOTES, USERID)"
+	         		+ "VALUES ('" + name + "', " + price + ", " + distance + ", " + type + ", '" + cuisines +"', '" + notes +"'," + userId+" );";
 	         PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
 	         preparedStatement.executeUpdate();
 	        	         

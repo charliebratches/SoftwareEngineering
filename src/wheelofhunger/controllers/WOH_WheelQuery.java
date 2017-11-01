@@ -50,12 +50,17 @@ public class WOH_WheelQuery extends HttpServlet {
 	    int price = -1;
 	    int type = -1;
 	    int distance= -1;
+	    int userId = -1;
+	    int databaseSelection = -1;
+	    String selectSQL = "";
+	    
     	try{
     		price = Integer.parseInt(request.getParameter("price")); 		
     		type = Integer.parseInt(request.getParameter("type"));
     		distance = Integer.parseInt(request.getParameter("distance"));
-    		
-    		
+    		userId = Integer.parseInt(session.getAttribute("userid").toString());
+    		databaseSelection = Integer.parseInt(request.getParameter("database"));
+    			
     	}catch(Exception e){
     		System.out.println("fields are null");
     		//checks the distance value. if it is -1, it sets distance to the max value to get all restaurants
@@ -87,8 +92,22 @@ public class WOH_WheelQuery extends HttpServlet {
 	         System.out.println("Failed to make connection!");
 	      }
 	      try {
-	         String selectSQL = "SELECT * FROM restaurants "
-	         		+ "WHERE PRICE <= "+price+" AND TYPE="+type+" AND DISTANCE <="+distance+";";
+	    	  //Users List of Restaurants
+	    	  if(databaseSelection == 1)
+	    	  {
+	    		  selectSQL = "SELECT * FROM restaurants2 "+ "WHERE PRICE <= "+price+" AND TYPE="+type+" AND DISTANCE <="+distance+ " AND USERID = " + userId + " ;";
+	    	  }
+	    	  //All Restaurants in Database
+	    	  else if(databaseSelection == 2)
+	    	  {
+	    		  selectSQL = "SELECT * FROM restaurants2 "+ "WHERE PRICE <= "+price+" AND TYPE="+type+" AND DISTANCE <="+distance+";";
+	    	  }
+	    	  //Google API Placeholder
+	    	  else if(databaseSelection == 3)
+	    	  {
+	    		  
+	    	  }
+	    	 
 	         PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
 	         ResultSet rs = preparedStatement.executeQuery();	        	 
 	         while (rs.next()) {

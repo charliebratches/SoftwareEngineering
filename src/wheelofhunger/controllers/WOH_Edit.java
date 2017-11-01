@@ -80,7 +80,7 @@ public class WOH_Edit extends HttpServlet {
 		         System.out.println("Failed to make connection!");
 		      }
 		      try {
-		         String selectSQL = "UPDATE restaurants "
+		         String selectSQL = "UPDATE restaurants2 "
 		         		+ "SET NAME='" + name + "', PRICE='" + price + "', TYPE='" + type + "', CUISINES='" + cuisines +"', NOTES='" + notes +"', DISTANCE=" + distance+ " "
          				+ "WHERE id = "+id+";";
 		         System.out.println("select: " + selectSQL);

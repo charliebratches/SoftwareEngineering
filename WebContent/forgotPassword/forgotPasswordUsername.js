@@ -9,3 +9,8 @@ $(document).ready(function()
 			alert("Incorrect answer to security questions. Please try again!");
 		}
 });
+
+formatData=function()
+{
+	$(".WOH-forgotPasswordUsername-form").submit();
+}

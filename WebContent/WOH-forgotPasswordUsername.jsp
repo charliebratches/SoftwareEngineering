@@ -20,6 +20,8 @@
 
 	<link rel="stylesheet" type="text/css" href="forgotPassword/WOH-forgotPassword.css">
 	<link rel="stylesheet" type="text/css" href="site/WOH-site.css">
+	
+	<script src="forgotPassword/forgotPasswordUsername.js"></script>
 
 	<title>Forgot Password</title>
 </head>
