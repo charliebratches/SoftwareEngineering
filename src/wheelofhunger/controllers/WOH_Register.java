@@ -70,6 +70,9 @@ public class WOH_Register extends HttpServlet {
     		secQuestion1 = Integer.parseInt(request.getParameter("secQuestion1"));
     		secQuestion2 = Integer.parseInt(request.getParameter("secQuestion2"));
     		secQuestion3 = Integer.parseInt(request.getParameter("secQuestion3"));
+    		secQuestionAnswer1 = request.getParameter("secQuestionAnswer1");
+    		secQuestionAnswer2 = request.getParameter("secQuestionAnswer2");
+    		secQuestionAnswer3 = request.getParameter("secQuestionAnswer3");
     		
     	}
     	catch(Exception e){

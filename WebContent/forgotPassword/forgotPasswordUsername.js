@@ -4,9 +4,13 @@ $(document).ready(function()
 		{
 			alert("Username does not exist");
 		}
-		else if($(".WOH-forgotPasswordUsername-errorHiddenInput").val() == 4)
+		else if($(".WOH-forgotPasswordUsername-errorHiddenInput").val() == 5)
 		{
 			alert("Incorrect answer to security questions. Please try again!");
+		}
+		else if($(".WOH-forgotPasswordUsername-errorHiddenInput").val() == 6)
+		{
+			alert("Error Updating Password. Please try again!");
 		}
 });
 

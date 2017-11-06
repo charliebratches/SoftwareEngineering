@@ -4,6 +4,15 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<% 
+if(session.getAttribute("forgotPasswordState") == null || Integer.parseInt(session.getAttribute("forgotPasswordState").toString()) != 3)
+{
+	RequestDispatcher rd;
+	rd = request.getRequestDispatcher("/WOH-forgotPasswordUsername.jsp");
+    rd.forward(request, response);
+}
+%>
+
 <html>
 
 <head>
@@ -21,6 +30,8 @@
 	
 	<link rel="stylesheet" type="text/css" href="forgotPassword/WOH-forgotPassword.css">
 	<link rel="stylesheet" type="text/css" href="site/WOH-site.css">
+	
+	<script src="forgotPassword/forgotPasswordNewPassword.js"></script>
 
 	<title>Forgot Password</title>
 </head>
@@ -33,7 +44,7 @@
 		<div class="row-fluid">
 			<div class="col-sm-10 col-sm-offset-2">
 			<h1 class="WOH-forgotPassword--Title">Forgot Password</h1>
-				<form action = "forgotPassword" method = "POST" class="form-horizontal WOH-forgotPassword-form">
+				<form action = "ForgotPasswordSetPassword" method = "POST" class="form-horizontal WOH-forgotPassword-form">
 					<div class = "col-sm-8">
 		         			
 		         			<!-- Password Textbox -->

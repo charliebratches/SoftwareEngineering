@@ -74,7 +74,7 @@
 							<div class="form-group">
 							<label class="control-label col-sm-2" for="WOH-register-secQuestion1Input">Answer</label>
 								<div class="col-sm-10">
-		         					<input type = "text" class="form-control WOH-register-secQuestion1Input" name = "secQuestion1Answer" required>
+		         					<input type = "text" class="form-control WOH-register-secQuestion1Input" name = "secQuestionAnswer1" required>
 		         				</div>
 		         			</div>
 		         			

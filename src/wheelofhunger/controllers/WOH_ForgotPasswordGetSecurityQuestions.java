@@ -6,15 +6,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import wheelofhunger.models.UserModel;
 
@@ -42,7 +40,9 @@ public class WOH_ForgotPasswordGetSecurityQuestions extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher rd;
+		rd = request.getRequestDispatcher("/WOH-forgotPasswordUsername.jsp");
+	    rd.forward(request, response);
 	}
 
 	/**
@@ -52,8 +52,10 @@ public class WOH_ForgotPasswordGetSecurityQuestions extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=UTF-8");
 		RequestDispatcher rd;
+		HttpSession session = request.getSession(true);
 		String username = request.getParameter("username");
 		int errorMessage = 0;
+		int forgotPasswordState = -1;
 	     
 	      try {
 	    	  Class.forName("com.mysql.jdbc.Driver");
@@ -85,20 +87,21 @@ public class WOH_ForgotPasswordGetSecurityQuestions extends HttpServlet {
 		    	 user.setSecQuestion3(rs.getInt("SECQUESTION3"));
 		    	 request.setAttribute("errorMessage", errorMessage);
 		    	 request.setAttribute("user", user);
+		    	 forgotPasswordState = 2;
+		    	 session.setAttribute("forgotPasswordState", forgotPasswordState);
+		    	 session.setAttribute("tempUserId", rs.getInt("USERID"));
 		    	 rd = request.getRequestDispatcher("/WOH-forgotPasswordQuestions.jsp");
 		         rd.forward(request, response);
 	         }
 	         else
 	         {
-	        	 errorMessage = 3;
+	        	 errorMessage = 3;//error message indicated an incorrect username entered in forgotPasswordUsername.jsp
 	        	 request.setAttribute("errorMessage", errorMessage);
+	        	 forgotPasswordState = 1;
+		    	 session.setAttribute("forgotPasswordState", forgotPasswordState);
 	        	 rd = request.getRequestDispatcher("/WOH-forgotPasswordUsername.jsp");
 		         rd.forward(request, response);
-	         }
-	         
-	         
-	         
-	        
+	         }  
 	         
 	      } catch (SQLException e) {
 	         e.printStackTrace();

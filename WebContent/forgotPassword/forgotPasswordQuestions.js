@@ -34,5 +34,5 @@ $(document).ready(function()
 
 formatData=function()
 {
-	$(".WOH-forgotPasswordUsername-form").submit();
+	$(".WOH-forgotPassword-form").submit();
 }

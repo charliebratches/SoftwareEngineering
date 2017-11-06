@@ -4,6 +4,15 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<% 
+if(session.getAttribute("forgotPasswordState") == null || Integer.parseInt(session.getAttribute("forgotPasswordState").toString()) != 2)
+{
+	RequestDispatcher rd;
+	rd = request.getRequestDispatcher("/WOH-forgotPasswordUsername.jsp");
+    rd.forward(request, response);
+}
+%>
+
 <html>
 
 <head>
@@ -35,7 +44,7 @@
 		<div class="row-fluid">
 			<div class="col-sm-10 col-sm-offset-2">
 			<h1 class="WOH-forgotPasswordQuestions--Title">Forgot Password</h1>
-				<form action = "ForgotPassword" method = "POST" class="form-horizontal WOH-forgotPassword-form">
+				<form action = "ForgotPasswordCheckQuestions" method = "POST" class="form-horizontal WOH-forgotPassword-form">
 					<div class = "col-sm-8">
 											
 		         			
@@ -61,7 +70,7 @@
 							
 							<label class="control-label col-sm-3" for="WOH-forgotPasswordQuestions-secQuestion1Input">Answer</label>
 								<div class="col-sm-9">
-		         					<input type = "text" class="form-control WOH-forgotPasswordQuestions-secQuestion1Input"  name = "secQuestion1Answer">
+		         					<input type = "text" class="form-control WOH-forgotPasswordQuestions-secQuestion1Input"  name = "secQuestionAnswer1">
 		         				</div>
 		         			</div>
 		         			
@@ -114,6 +123,7 @@
 		         					<input type = "text" class="form-control WOH-forgotPasswordQuestions-secQuestion3Input" name = "secQuestionAnswer3">
 		         				</div>
 		         			</div>
+		         	
 	         			
 						<!-- Submit Button -->
 							
