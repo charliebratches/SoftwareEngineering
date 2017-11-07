@@ -53,7 +53,7 @@ public class WOH_Edit extends HttpServlet {
 		
 		if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "") || request.getParameter("name") == null)
 	     {
-	    	  rd = request.getRequestDispatcher("/WOH-login.jsp");
+	    	  rd = request.getRequestDispatcher("/WOH-index.jsp");
 		      rd.forward(request, response);
 	     }
 		   

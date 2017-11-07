@@ -58,7 +58,7 @@ public class WOH_Register extends HttpServlet {
 		
 		 if (request.getParameter("username") == null || request.getParameter("password") == null)
 	     {
-	    	  rd = request.getRequestDispatcher("/WOH-login.jsp");
+	    	  rd = request.getRequestDispatcher("/WOH-register.jsp");
 		      rd.forward(request, response);
 	     }
 		 

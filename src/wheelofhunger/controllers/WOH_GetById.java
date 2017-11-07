@@ -49,7 +49,7 @@ public class WOH_GetById extends HttpServlet {
 		
 		if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "") || request.getParameter("id") == null)
 	     {
-	    	  rd = request.getRequestDispatcher("/WOH-login.jsp");
+	    	  rd = request.getRequestDispatcher("/WOH-index.jsp");
 		      rd.forward(request, response);
 	     }
 		

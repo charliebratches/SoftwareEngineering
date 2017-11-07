@@ -50,7 +50,7 @@ public class WOH_WheelQuery extends HttpServlet {
     	
     	if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "") || request.getParameter("price") == null)
 	     {
-	    	  rd = request.getRequestDispatcher("/WOH-login.jsp");
+	    	  rd = request.getRequestDispatcher("/WOH-index.jsp");
 		      rd.forward(request, response);
 	     }
     	

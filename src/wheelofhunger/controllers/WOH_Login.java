@@ -51,7 +51,7 @@ public class WOH_Login extends HttpServlet {
 		// TODO Auto-generated method stub
 		RequestDispatcher rd;
 		
-		 if (request.getParameter("username") == null)
+		 if (request.getParameter("username") == null || request.getParameter("password") == null)
 	     {
 	    	  rd = request.getRequestDispatcher("/WOH-login.jsp");
 		      rd.forward(request, response);

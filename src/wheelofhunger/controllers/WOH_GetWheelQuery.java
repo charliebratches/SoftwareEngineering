@@ -38,7 +38,7 @@ public class WOH_GetWheelQuery extends HttpServlet {
 		
 		if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "") || session.getAttribute("restaurantList") == null)
 	     {
-	    	  rd = request.getRequestDispatcher("/WOH-login.jsp");
+	    	  rd = request.getRequestDispatcher("/WOH-index.jsp");
 		      rd.forward(request, response);
 	     }
 		

@@ -42,6 +42,13 @@ public class WOH_Logout extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		HttpSession session = request.getSession(true);
+		RequestDispatcher rd;
+		
+		if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == ""))
+	      {
+	    	  rd = request.getRequestDispatcher("/WOH-index.jsp");
+		      rd.forward(request, response);
+	      }
 		session.setAttribute("userid", null);
 		session.invalidate();
 		response.sendRedirect("WOH-index.jsp");
