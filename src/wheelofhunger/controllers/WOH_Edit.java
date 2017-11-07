@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class WOH_Delete
@@ -37,7 +38,9 @@ public class WOH_Edit extends HttpServlet {
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+    	RequestDispatcher rd;
+		rd = request.getRequestDispatcher("/WOH-index.jsp");
+	    rd.forward(request, response);
 	}
 
 	/**
@@ -45,6 +48,14 @@ public class WOH_Edit extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
+		HttpSession session = request.getSession(true);
+	    RequestDispatcher rd;
+		
+		if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "") || request.getParameter("name") == null)
+	     {
+	    	  rd = request.getRequestDispatcher("/WOH-login.jsp");
+		      rd.forward(request, response);
+	     }
 		   
 			String name = request.getParameter("name");
 		    int price = -1;
@@ -90,7 +101,6 @@ public class WOH_Edit extends HttpServlet {
 		      } catch (SQLException e) {
 		         e.printStackTrace();
 		      } 	      
-		      RequestDispatcher rd;
 		      rd = request.getRequestDispatcher("DisplayAll");
 		      rd.forward(request, response);
 		

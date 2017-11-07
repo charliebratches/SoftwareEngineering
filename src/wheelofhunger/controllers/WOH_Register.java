@@ -43,7 +43,9 @@ public class WOH_Register extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher rd;
+		rd = request.getRequestDispatcher("/WOH-index.jsp");
+	    rd.forward(request, response);
 	}
 
 	/**
@@ -53,6 +55,13 @@ public class WOH_Register extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=UTF-8");
 		RequestDispatcher rd;
+		
+		 if (request.getParameter("username") == null || request.getParameter("password") == null)
+	     {
+	    	  rd = request.getRequestDispatcher("/WOH-login.jsp");
+		      rd.forward(request, response);
+	     }
+		 
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String secQuestionAnswer1 ="";

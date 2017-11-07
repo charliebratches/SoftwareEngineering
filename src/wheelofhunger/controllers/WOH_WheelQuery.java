@@ -46,6 +46,14 @@ public class WOH_WheelQuery extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
     	response.setContentType("text/html;charset=UTF-8");
+    	RequestDispatcher rd;
+    	
+    	if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "") || request.getParameter("price") == null)
+	     {
+	    	  rd = request.getRequestDispatcher("/WOH-login.jsp");
+		      rd.forward(request, response);
+	     }
+    	
 		List<RestaurantModel> restaurantList = new ArrayList<>();
 	    int price = -1;
 	    int type = -1;
@@ -137,7 +145,6 @@ public class WOH_WheelQuery extends HttpServlet {
 	        	}        		
 	         } 
 	         session.setAttribute("restaurantList", restaurantList);
-	         RequestDispatcher rd;
 	         rd = request.getRequestDispatcher("/WOH-Wheel.jsp");
 	         rd.forward(request, response);
 	         

@@ -53,9 +53,17 @@ public class WOH_ForgotPasswordGetSecurityQuestions extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		RequestDispatcher rd;
 		HttpSession session = request.getSession(true);
-		String username = request.getParameter("username");
+		
 		int errorMessage = 0;
 		int forgotPasswordState = -1;
+		
+		if (request.getParameter("username") == null)
+	     {
+	    	  rd = request.getRequestDispatcher("/WOH-forgotPasswordUsername.jsp");
+		      rd.forward(request, response);
+	     }
+		
+		String username = request.getParameter("username");
 	     
 	      try {
 	    	  Class.forName("com.mysql.jdbc.Driver");

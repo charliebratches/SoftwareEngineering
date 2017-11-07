@@ -37,6 +37,13 @@ public class WOH_DisplayAll extends HttpServlet{
 	      response.setContentType("text/html;charset=UTF-8");
 	      List<RestaurantModel> restaurantList = new ArrayList<>();
 	      HttpSession session = request.getSession(true);
+	      RequestDispatcher rd;
+	      
+	      if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == ""))
+	      {
+	    	  rd = request.getRequestDispatcher("/WOH-login.jsp");
+		      rd.forward(request, response);
+	      }
 	     
 	      try {
 	    	  Class.forName("com.mysql.jdbc.Driver");
@@ -84,7 +91,7 @@ public class WOH_DisplayAll extends HttpServlet{
 	         //Setting the value of contactList, pointing the request dispatcher towards 
 	         // ContactList.jsp and sending the data to that page
 	         request.setAttribute("restaurantList", restaurantList);
-	         RequestDispatcher rd;
+	         
 	         rd = request.getRequestDispatcher("/WOH-restaurantList.jsp");
 	         rd.forward(request, response);
 	         

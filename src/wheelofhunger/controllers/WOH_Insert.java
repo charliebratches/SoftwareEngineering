@@ -44,7 +44,9 @@ public class WOH_Insert extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher rd;
+		rd = request.getRequestDispatcher("/WOH-index.jsp");
+	    rd.forward(request, response);
 	}
 
 	/**
@@ -54,14 +56,22 @@ public class WOH_Insert extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession(true);
-		String name = request.getParameter("name");
+		RequestDispatcher rd;
+		String name = "";
 	    int price = -1;
 	    int type = -1;
 	    int distance = -1;
 	    int userId = -1;
 	    
+	    if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "") || request.getParameter("name") == null)
+	     {
+	    	  rd = request.getRequestDispatcher("/WOH-login.jsp");
+		      rd.forward(request, response);
+	     }
+	    
     	try
     	{
+    		name = request.getParameter("name");
     		price = Integer.parseInt(request.getParameter("price"));
     		type = Integer.parseInt(request.getParameter("type"));
     		distance = Integer.parseInt(request.getParameter("distance"));
@@ -98,7 +108,7 @@ public class WOH_Insert extends HttpServlet {
 	      } catch (SQLException e) {
 	         e.printStackTrace();
 	      } 	      
-	      RequestDispatcher rd;
+	      
 	      rd = request.getRequestDispatcher("DisplayAll");
 	      rd.forward(request, response);
 	    

@@ -3,6 +3,7 @@ package wheelofhunger.controllers;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,6 +34,14 @@ public class WOH_GetWheelQuery extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(true);
+		RequestDispatcher rd;
+		
+		if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "") || session.getAttribute("restaurantList") == null)
+	     {
+	    	  rd = request.getRequestDispatcher("/WOH-login.jsp");
+		      rd.forward(request, response);
+	     }
+		
 		response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         

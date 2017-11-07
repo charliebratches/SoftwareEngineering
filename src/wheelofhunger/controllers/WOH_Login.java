@@ -39,7 +39,9 @@ public class WOH_Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher rd;
+		rd = request.getRequestDispatcher("/WOH-login.jsp");
+	    rd.forward(request, response);
 	}
 
 	/**
@@ -48,6 +50,13 @@ public class WOH_Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		RequestDispatcher rd;
+		
+		 if (request.getParameter("username") == null)
+	     {
+	    	  rd = request.getRequestDispatcher("/WOH-login.jsp");
+		      rd.forward(request, response);
+	     }
+		 
 		String username = request.getParameter("username");
 		String Userpassword = request.getParameter("password");
 		int userId = -1;
