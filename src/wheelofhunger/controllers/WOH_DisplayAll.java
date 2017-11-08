@@ -36,6 +36,14 @@ public class WOH_DisplayAll extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	      response.setContentType("text/html;charset=UTF-8");
 	      List<RestaurantModel> restaurantList = new ArrayList<>();
+	      HttpSession session = request.getSession(true);
+	      RequestDispatcher rd;
+	      
+	      if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == ""))
+	      {
+	    	  rd = request.getRequestDispatcher("/WOH-login.jsp");
+		      rd.forward(request, response);
+	      }
 	     
 	      try {
 	    	  Class.forName("com.mysql.jdbc.Driver");
@@ -55,8 +63,9 @@ public class WOH_DisplayAll extends HttpServlet{
 	         System.out.println("Failed to make connection!");
 	      }
 	      try {
-	         String selectSQL = "SELECT * FROM restaurants "
-	         		+ "ORDER BY NAME;";
+	    	 int userId = Integer.parseInt(session.getAttribute("userid").toString());
+	         String selectSQL = "SELECT * FROM restaurants2 WHERE USERID = " +userId
+	         		+ " ORDER BY NAME;";
 	         PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
 	         ResultSet rs = preparedStatement.executeQuery();
 	         while (rs.next()) {
@@ -82,7 +91,7 @@ public class WOH_DisplayAll extends HttpServlet{
 	         //Setting the value of contactList, pointing the request dispatcher towards 
 	         // ContactList.jsp and sending the data to that page
 	         request.setAttribute("restaurantList", restaurantList);
-	         RequestDispatcher rd;
+	         
 	         rd = request.getRequestDispatcher("/WOH-restaurantList.jsp");
 	         rd.forward(request, response);
 	         

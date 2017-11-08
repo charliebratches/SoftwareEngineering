@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,23 +17,29 @@
 
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
 	<link rel="stylesheet" type="text/css" href="site/WOH-site.css">
 	
 	<title>Wheel of Hunger</title>
 </head>
 
 <body>
-<% 
-	if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "")) 
-    { %>
-		<%@include file="banner/WOH-bannerLoggedOut.jsp"%>
-    <% }
-	else
-	{ %>
-		<%@include file="banner/WOH-banner.jsp" %>
-	<% }
-%>
-	
+	<nav class="navbar navbar-default">
+  	<div class="container-fluid">
+    	<div class="navbar-header">
+      	<a class="navbar-brand" href="WOH-index.jsp">Wheel of Hunger</a>
+    	</div>
+    	<ul class="nav navbar-nav">
+      	<li><a href="WOH-index.jsp">Home</a></li>
+    	</ul>
+    	<ul class="nav navbar-nav navbar-right">
+      	<li><a href="WOH-register.jsp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      	<li><a href="WOH-login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    	</ul>
+    	
+    	
 
+  	</div>
+	</nav>
 </body>
 </html>

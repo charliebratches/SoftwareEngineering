@@ -11,7 +11,7 @@
 	
 </head>
 <body>
-	<%@include file="banner/WOH-banner.html" %>	
+	<%@include file="banner/WOH-banner.jsp" %>	
 	<div class="container WOH-Wheel--WheelContainer">
 		<div class="row">
 			<div class="text-center">

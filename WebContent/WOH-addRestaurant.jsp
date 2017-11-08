@@ -31,7 +31,7 @@
 </head>
 
 <body>
-<%@include file="banner/WOH-banner.html" %>
+<%@include file="banner/WOH-banner.jsp" %>
 	
 	<div class ="container-fluid">
 		

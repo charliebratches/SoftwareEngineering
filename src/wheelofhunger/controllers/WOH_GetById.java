@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import wheelofhunger.models.RestaurantModel;
 
@@ -42,8 +43,18 @@ public class WOH_GetById extends HttpServlet {
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		String id = request.getParameter("id");
-	     
+		RequestDispatcher rd;
+		HttpSession session = request.getSession(true);
+		String id = ""; 
+		
+		if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "") || request.getParameter("id") == null)
+	     {
+	    	  rd = request.getRequestDispatcher("/WOH-index.jsp");
+		      rd.forward(request, response);
+	     }
+		
+		id = request.getParameter("id");
+		
 	      try {
 	    	  Class.forName("com.mysql.jdbc.Driver");
 	      } catch (ClassNotFoundException e) {
@@ -61,7 +72,7 @@ public class WOH_GetById extends HttpServlet {
 	         System.out.println("Failed to make connection!");
 	      }
 	      try {
-	         String selectSQL = "SELECT * FROM restaurants "
+	         String selectSQL = "SELECT * FROM restaurants2 "
 	         		+ "WHERE id = "+id+";";
 	         PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
 	         ResultSet rs = preparedStatement.executeQuery();	        	 
@@ -87,7 +98,6 @@ public class WOH_GetById extends HttpServlet {
 	         }
 	         
 	         request.setAttribute("restaurant", restaurant);
-	         RequestDispatcher rd;
 	         rd = request.getRequestDispatcher("/WOH-editRestaurant.jsp");
 	         rd.forward(request, response);
 	         

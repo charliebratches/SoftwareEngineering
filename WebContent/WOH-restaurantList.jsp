@@ -34,7 +34,7 @@
 
 <%@ page isELIgnored="false" %>
 
-<%@include file="banner/WOH-banner.html" %>
+<%@include file="banner/WOH-banner.jsp" %>
 
 <%@ page import ="java.util.ArrayList, wheelofhunger.models.RestaurantModel" %>
 

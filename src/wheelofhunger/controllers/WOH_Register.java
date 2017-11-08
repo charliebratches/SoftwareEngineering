@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -21,10 +20,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Servlet implementation class WOH_Insert
+ * Servlet implementation class WOH_Register
  */
-@WebServlet("/Insert")
-public class WOH_Insert extends HttpServlet {
+@WebServlet("/Register")
+public class WOH_Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static String             url              = "jdbc:mysql://wheelofhunger.ddns.net:3306/WOHDB";
 	static String             user             = "remote";
@@ -34,7 +33,7 @@ public class WOH_Insert extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public WOH_Insert() {
+    public WOH_Register() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -55,34 +54,40 @@ public class WOH_Insert extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=UTF-8");
-		HttpSession session = request.getSession(true);
 		RequestDispatcher rd;
-		String name = "";
-	    int price = -1;
-	    int type = -1;
-	    int distance = -1;
-	    int userId = -1;
-	    
-	    if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "") || request.getParameter("name") == null)
+		
+		 if (request.getParameter("username") == null || request.getParameter("password") == null)
 	     {
-	    	  rd = request.getRequestDispatcher("/WOH-index.jsp");
+	    	  rd = request.getRequestDispatcher("/WOH-register.jsp");
 		      rd.forward(request, response);
 	     }
+		 
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String secQuestionAnswer1 ="";
+		String secQuestionAnswer2 = "";
+		String secQuestionAnswer3 = "";
+		
+	    int secQuestion1 = -1;
+	    int secQuestion2 = -1;
+	    int secQuestion3 = -1;
+	    
+	    int errorMessage = 0;
 	    
     	try
     	{
-    		name = request.getParameter("name");
-    		price = Integer.parseInt(request.getParameter("price"));
-    		type = Integer.parseInt(request.getParameter("type"));
-    		distance = Integer.parseInt(request.getParameter("distance"));
-    		userId = Integer.parseInt(session.getAttribute("userid").toString());
+    		secQuestion1 = Integer.parseInt(request.getParameter("secQuestion1"));
+    		secQuestion2 = Integer.parseInt(request.getParameter("secQuestion2"));
+    		secQuestion3 = Integer.parseInt(request.getParameter("secQuestion3"));
+    		secQuestionAnswer1 = request.getParameter("secQuestionAnswer1");
+    		secQuestionAnswer2 = request.getParameter("secQuestionAnswer2");
+    		secQuestionAnswer3 = request.getParameter("secQuestionAnswer3");
+    		
     	}
     	catch(Exception e){
     		System.out.println("fields are null");
     	}
 	    
-    	String cuisines = request.getParameter("cuisines");
-		String notes = request.getParameter("notes");
     	try {
 	    	  Class.forName("com.mysql.jdbc.Driver");
 	      } catch (ClassNotFoundException e) {
@@ -99,21 +104,27 @@ public class WOH_Insert extends HttpServlet {
 	      } else {
 	         System.out.println("Failed to make connection!");
 	      }
-	      try {
-	         String insertSQL = "INSERT INTO restaurants2(NAME, PRICE, DISTANCE, TYPE, CUISINES, NOTES, USERID)"
-	         		+ "VALUES ('" + name + "', " + price + ", " + distance + ", " + type + ", '" + cuisines +"', '" + notes +"'," + userId+" );";
-	         PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
-	         preparedStatement.executeUpdate();
+	      try 
+	      {	
+	        	String insertSQL = "INSERT INTO users(USERNAME, PASSWORD, SECQUESTION1, SECQUESTION2, SECQUESTION3, SECANSWER1, SECANSWER2, SECANSWER3)"
+		         		+ "VALUES ('" + username + "', '" + password + "', " + secQuestion1 + ", " + secQuestion2 + ", " + secQuestion3  + ", '" + secQuestionAnswer1 + "', '" + secQuestionAnswer2  +"', '" + secQuestionAnswer3 +"');";
+	        	PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
+		        int i = preparedStatement.executeUpdate();
+		        
+		        if(i == 0)
+		        {
+		        	errorMessage = 1;
+		        	request.setAttribute("errorMessage", errorMessage);
+		        	rd = request.getRequestDispatcher("WOH-register.jsp");
+		        	rd.forward(request, response);
+		        }
 	        	         
 	      } catch (SQLException e) {
 	         e.printStackTrace();
 	      } 	      
-	      
-	      rd = request.getRequestDispatcher("DisplayAll");
+	     
+	      rd = request.getRequestDispatcher("WOH-login.jsp");
 	      rd.forward(request, response);
-	    
-	    
-	    
 	}
 
 }
