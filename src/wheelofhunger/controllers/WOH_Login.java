@@ -40,7 +40,7 @@ public class WOH_Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("/WOH-login.jsp");
+		rd = request.getRequestDispatcher("/WOH-index.jsp");
 	    rd.forward(request, response);
 	}
 
@@ -53,7 +53,7 @@ public class WOH_Login extends HttpServlet {
 		
 		 if (request.getParameter("username") == null || request.getParameter("password") == null)
 	     {
-	    	  rd = request.getRequestDispatcher("/WOH-login.jsp");
+	    	  rd = request.getRequestDispatcher("/WOH-index.jsp");
 		      rd.forward(request, response);
 	     }
 		 
