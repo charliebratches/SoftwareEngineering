@@ -113,7 +113,7 @@ public class WOH_Register extends HttpServlet {
 	        	PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
 		        int i = preparedStatement.executeUpdate();
 	        	         
-	      }catch(SQLIntegrityConstraintViolationException e)
+	      }catch(SQLIntegrityConstraintViolationException es)
 	      {
 	    	  	errorMessage = 1;
 	        	request.setAttribute("errorMessage", errorMessage);
@@ -122,7 +122,7 @@ public class WOH_Register extends HttpServlet {
 	    	  
 	      } catch (SQLException e)
 	      {
-	    	  
+	    	  e.printStackTrace();
 	      }
 	     
 	      rd = request.getRequestDispatcher("WOH-login.jsp");
