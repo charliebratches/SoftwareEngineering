@@ -28,7 +28,7 @@ public class WOH_Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static String             url              = "jdbc:mysql://wheelofhunger.ddns.net:3306/WOHDB";
 	static String             user             = "remote";
-	static String             password         = "1234";
+	static String             databasePassword = "1234";
 	static Connection         connection       = null;
        
     /**
@@ -96,7 +96,7 @@ public class WOH_Register extends HttpServlet {
 	      }
  		connection = null;
 	      try {
-	         connection = DriverManager.getConnection(url, user, password);
+	         connection = DriverManager.getConnection(url, user, databasePassword);
 	      } catch (SQLException e) {
 	    	  System.out.print("Bad URL");
 	         e.printStackTrace();
@@ -111,7 +111,7 @@ public class WOH_Register extends HttpServlet {
 		         		+ " VALUES('" + username + "', '" + password + "', " + secQuestion1 + ", " + secQuestion2 + ", " + secQuestion3  + ", '" + secQuestionAnswer1 + "', '" + secQuestionAnswer2  +"', '" + secQuestionAnswer3 +"')"; 
 	        	System.out.println(insertSQL);
 	        	PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
-		        int i = preparedStatement.executeUpdate();
+		        preparedStatement.executeUpdate();
 	        	         
 	      }catch(SQLIntegrityConstraintViolationException es)
 	      {
