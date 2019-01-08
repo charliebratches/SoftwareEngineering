@@ -1,2 +1,2 @@
 # SoftwareEngineering
-Munchies Project
+Wheel of Hunger Web Application
