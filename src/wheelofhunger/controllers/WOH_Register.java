@@ -15,6 +15,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -27,7 +28,7 @@ public class WOH_Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static String             url              = "jdbc:mysql://wheelofhunger.ddns.net:3306/WOHDB";
 	static String             user             = "remote";
-	static String             password         = "1234";
+	static String             databasePassword = "1234";
 	static Connection         connection       = null;
        
     /**
@@ -95,7 +96,7 @@ public class WOH_Register extends HttpServlet {
 	      }
  		connection = null;
 	      try {
-	         connection = DriverManager.getConnection(url, user, password);
+	         connection = DriverManager.getConnection(url, user, databasePassword);
 	      } catch (SQLException e) {
 	    	  System.out.print("Bad URL");
 	         e.printStackTrace();
@@ -107,21 +108,22 @@ public class WOH_Register extends HttpServlet {
 	      try 
 	      {	
 	        	String insertSQL = "INSERT INTO users(USERNAME, PASSWORD, SECQUESTION1, SECQUESTION2, SECQUESTION3, SECANSWER1, SECANSWER2, SECANSWER3)"
-		         		+ "VALUES ('" + username + "', '" + password + "', " + secQuestion1 + ", " + secQuestion2 + ", " + secQuestion3  + ", '" + secQuestionAnswer1 + "', '" + secQuestionAnswer2  +"', '" + secQuestionAnswer3 +"');";
+		         		+ " VALUES('" + username + "', '" + password + "', " + secQuestion1 + ", " + secQuestion2 + ", " + secQuestion3  + ", '" + secQuestionAnswer1 + "', '" + secQuestionAnswer2  +"', '" + secQuestionAnswer3 +"')"; 
+	        	System.out.println(insertSQL);
 	        	PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
-		        int i = preparedStatement.executeUpdate();
-		        
-		        if(i == 0)
-		        {
-		        	errorMessage = 1;
-		        	request.setAttribute("errorMessage", errorMessage);
-		        	rd = request.getRequestDispatcher("WOH-register.jsp");
-		        	rd.forward(request, response);
-		        }
+		        preparedStatement.executeUpdate();
 	        	         
-	      } catch (SQLException e) {
-	         e.printStackTrace();
-	      } 	      
+	      }catch(SQLIntegrityConstraintViolationException es)
+	      {
+	    	  	errorMessage = 1;
+	        	request.setAttribute("errorMessage", errorMessage);
+	        	rd = request.getRequestDispatcher("WOH-register.jsp");
+	        	rd.forward(request, response);
+	    	  
+	      } catch (SQLException e)
+	      {
+	    	  e.printStackTrace();
+	      }
 	     
 	      rd = request.getRequestDispatcher("WOH-login.jsp");
 	      rd.forward(request, response);
